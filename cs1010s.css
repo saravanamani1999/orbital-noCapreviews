@@ -1,0 +1,123 @@
+body {
+  background-color: #282828;
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em 1em;
+}
+
+hr {
+  width: 100%;
+}
+
+h2 {
+  color: #026CBE;
+  font-weight: 600;
+  font-family: Inter, sans-serif;
+  margin-top: 1em;
+  margin-bottom: 0.1em;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
+
+.logo {
+  display: flex;
+}
+
+.logo #logo {
+  width: 14em;
+}
+
+.search {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.search #search {
+  width: 100%;
+}
+
+.search #search-bar {
+  border: 1px solid black;
+  border-radius: 2em;
+  height: 2.5em;
+  width: 100%;
+  padding: 1em;
+  background-color: #DFDFDF;
+  font-size: 1em;
+}
+
+#search-bar::placeholder {
+  color: black;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+}
+
+.mod {
+  padding-top: 15px;
+  padding-bottom: 0;
+  font-family: Inter, sans-serif;
+}
+
+.mod h1{
+  font-size: 1em
+  font-weight: 500;
+  color: #026CBE;
+  margin-bottom: 0;
+}
+
+.mod h1 span{
+  color: #777777;
+}
+
+.details1, .details2 {
+  padding-top: 0;
+  color: #777777;
+  font-family: Inter, sans-serif;
+  font-size: 1.3em;
+}
+
+.details1 h5 {
+   margin-top: 5px;
+   margin-bottom: 0;
+}
+
+.details2 h5 {
+   margin-top: 0;
+   margin-bottom: 30px;
+}
+
+.Description1 h2 {
+  margin-bottom:5px;
+}
+
+.Description2 p {
+  width: 75%;
+  color: #C9C9C9;
+  font-family: Roboto, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.Sentiment {
+  display: flex;
+  flex-direction: column;
+}
+
+.Sentiment #sentiment {
+  width: 40em;
+}
+
+
+.Forum {
+  display: flex;
+  flex-direction: column;
+}
+
+.Forum #forum {
+  width: 75em;
+}
