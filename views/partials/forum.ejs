@@ -1,0 +1,30 @@
+<div class="Forum">
+  <h2>Forum</h2>
+  <hr>
+  <div class="Forum2">
+    <form action="/newComment", method="POST">
+      <input type="text" placeholder="Write a comment!">
+    </form>
+    <% for (comment of comments.forum) { %>
+      <div class="comment">
+        <img src="/images/cap-filled.png" alt="user-dp">
+        <div class="content">
+          <div class="details">
+            <h3>
+              <%= comment.author %>
+            </h3>
+            <span class="badge">
+              <%= comment.semester %>
+            </span>
+            <span class="badge">
+              <%= comment.major %>
+            </span>
+          </div>
+          <p>
+            <%= comment.body %>
+          </p>
+        </div>
+      </div>
+      <% } %>
+  </div>
+</div>
