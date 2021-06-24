@@ -40,10 +40,9 @@ app.get('/searchModules', (req, res) => {
 });
 
 app.get('/:moduleCode', async (req, res) => {
-    const { moduleCode } = req.params;
-    console.log(moduleCode)
+    const { moduleCode } = req.params
     const data = moduleInfo.filter(module => module.moduleCode === moduleCode.toUpperCase())[0]; // Getting the specific module information from moduleInfo.json based on moduleCode 
-    const comments = await Module.findOne({code: moduleCode.toUpperCase()});
+    const comments = await Module.findOne({code: moduleCode.toUpperCase()}); // Querying MongoDB for specific module properties based on moduleCode
     res.render('module', {data, comments})
 });
 
