@@ -1,0 +1,16 @@
+.error {
+    display: flex;
+    height: 100vh;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10em;
+}
+
+#sweat {
+    width: 22em;
+}
+
+#error-message {
+    margin-left: 10em;
+}

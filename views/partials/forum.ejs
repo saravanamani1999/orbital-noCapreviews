@@ -1,43 +1,45 @@
 <div class="Forum">
-  <h2>Forum</h2>
-  <hr>
-  <div class="Forum2">
-    <!-- Display number of comments -->
-    <h2><%= (comments.forum.length === 1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`  %></h2>
-    <!-- Create a new comment code below -->
-    <form action="<%= data.moduleCode %>/newComment", method="POST">
-      <input type="text" placeholder="Type your comment here!" name="body">
-      <select name="semester" id="pet-select">
+    <h2>Forum</h2>
+    <hr>
+    <div class="Forum2">
+        <!-- Display number of comments -->
+        <h2>
+            <%= (comments.forum.length === 1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`  %>
+        </h2>
+        <!-- Create a new comment code below -->
+        <form action="<%= data.moduleCode %>/newComment" , method="POST">
+            <input type="text" placeholder="Type your comment here!" name="body">
+            <select name="semester" id="pet-select">
         <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
         <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
         <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
         <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
       </select>
-      <input type="text" placeholder="Type your major here" name="major">
-      <input type="text" placeholder="Username" name="author">
-      <button>Submit</button>
-    </form>
-    <!-- Listing out all comments that exist -->
-    <% for (comment of comments.forum) { %>
-      <div class="comment">
-        <img src="/images/cap-filled.png" alt="user-dp">
-        <div class="content">
-          <div class="details">
-            <h3>
-              <%= comment.author %>
-            </h3>
-            <span class="badge">
+            <input type="text" placeholder="Type your major here" name="major">
+            <input type="text" placeholder="Username" name="author">
+            <button>Submit</button>
+        </form>
+        <!-- Listing out all comments that exist -->
+        <% for (comment of comments.forum) { %>
+            <div class="comment">
+                <img src="/images/cap-filled.png" alt="user-dp">
+                <div class="content">
+                    <div class="details">
+                        <h3>
+                            <%= comment.author %>
+                        </h3>
+                        <span class="badge">
               <%= comment.semester %>
             </span>
-            <span class="badge">
+                        <span class="badge">
               <%= comment.major %>
             </span>
-          </div>
-          <p>
-            <%= comment.body %>
-          </p>
-        </div>
-      </div>
-      <% } %>
-  </div>
+                    </div>
+                    <p>
+                        <%= comment.body %>
+                    </p>
+                </div>
+            </div>
+            <% } %>
+    </div>
 </div>
