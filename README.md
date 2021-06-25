@@ -26,9 +26,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="./static/images/logo.jpg">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+    <img src="./static/images/logo.jpg" alt="Logo" width="80" height="80">
 
   <h3 align="center">noCapReviews</h3>
 
