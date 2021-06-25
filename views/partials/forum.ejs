@@ -1,39 +1,46 @@
 <div class="Forum">
     <h2>Forum</h2>
-    <hr>
+    <hr />
     <div class="Forum2">
-        <!-- Display number of comments -->
-        <h2>
-            <%= (comments.forum.length === 1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`  %>
-        </h2>
         <!-- Create a new comment code below -->
         <form action="<%= data.moduleCode %>/newComment" , method="POST">
-            <input type="text" placeholder="Type your comment here!" name="body">
-            <select name="semester" id="pet-select">
-        <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
-        <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
-        <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
-        <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
-      </select>
-            <input type="text" placeholder="Type your major here" name="major">
-            <input type="text" placeholder="Username" name="author">
-            <button>Submit</button>
+            <label for="body" id="body-label">Join the discussion here</label>
+            <div>
+                <label for="author" class="userDetails">Username</label>
+                <input type="text" placeholder="Username" name="author" id="author" required />
+                <label for="semester" class="userDetails">Select the semester you took in the module in</label>
+                <select name="semester" id="semester" required>
+                    <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
+                    <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
+                    <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
+                    <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
+                </select>
+                <label for="major" class="userDetails">Select your major</label>
+                <input type="text" placeholder="Type your major here" name="major" id="major" required />
+                <button id="comment-button">Submit</button>
+            </div>
+            <input type="text" placeholder="Comment here..." name="body" id="body" required />
         </form>
+        <!-- Display number of comments -->
+        <h2>
+            <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`
+                %>
+        </h2>
         <!-- Listing out all comments that exist -->
         <% for (comment of comments.forum) { %>
             <div class="comment">
-                <img src="/images/cap-filled.png" alt="user-dp">
+                <img src="/images/cap-filled.png" alt="user-dp" />
                 <div class="content">
                     <div class="details">
                         <h3>
                             <%= comment.author %>
                         </h3>
-                        <span class="badge">
-              <%= comment.semester %>
-            </span>
-                        <span class="badge">
-              <%= comment.major %>
-            </span>
+                        <span class="badge-1">
+                            <%= comment.semester %>
+                        </span>
+                        <span class="badge-2">
+                            <%= comment.major %>
+                        </span>
                     </div>
                     <p>
                         <%= comment.body %>

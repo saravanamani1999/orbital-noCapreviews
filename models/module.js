@@ -10,7 +10,7 @@ const ModuleSchema = new Schema({
         overallExp: Number
     },
     forum: [{
-        _id : false,
+        _id: false,
         author: String,
         semester: String,
         major: String,

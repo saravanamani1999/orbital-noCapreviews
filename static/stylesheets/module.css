@@ -168,7 +168,7 @@ h2 {
     font-weight: 700;
 }
 
-.badge {
+.badge-1 {
     border: 0.5px solid;
     border-radius: 25px;
     padding: 0.2em 0.6em 0.15em 0.6em;
@@ -176,6 +176,16 @@ h2 {
     font-size: 0.9em;
     margin-right: 0.5em;
     background-color: #78F975;
+}
+
+.badge-2 {
+    border: 0.5px solid;
+    border-radius: 25px;
+    padding: 0.2em 0.6em 0.15em 0.6em;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    background-color: #F97575;
 }
 
 .Forum2 .comment .content p {
@@ -188,6 +198,96 @@ h2 {
 
 .Forum2 h2 {
     color: #777777;
+    margin: 1em 0 0.5em;
+}
+
+#body-label {
+    display: block;
+    color:#026CBE;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin: 0.5em 0 0.5em;
+}
+
+.Forum2 #body {
+    display: block;
+    width: 80%;
+    height: 4em;
+    border: 1px solid black;
+    border-radius: 1em;
+    background-color: #DFDFDF;
+    font-size: 1em;
+    font-weight: 600;
+    margin: 1em 0 0.5em;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;;
+}
+
+.Forum2 #body::placeholder {
+    color:#282828;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.Forum2 .userDetails {
+    color: #a8a8a8;
+    font-weight: 600;
+}
+
+#author {
+    width: 10em;
+    font-size: 1em;
+    font-weight: 500;
+    height: 1em;
+    padding: 0.5em 1em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#author::placeholder {
+    font-weight: 600;
+    color: black;
+}
+
+#semester {
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.5em 0.5em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#major {
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.5em 0.5em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#major::placeholder {
+    font-weight: 600;
+    color: black;
+}
+
+#comment-button {
+    background-color:#026CBE;
+    color: black;
+    height: 3em;
+    border: 1px solid black;
+    border-radius: 1.1em;
+    font-size: 0.8em;
+    font-weight: 600;
+    width: 7em;
 }
 
 #myBtn {
