@@ -48,9 +48,10 @@ const seedModule = async() => {
         body: "It was meant to be an introductory module to programming in python. As a beginner in python programming, I struggled a lot at the start of the module but thanks to the helpful professors and TAs i managed to keep up with the content. Overall it was a good experience and I would recommend you to take this if youre interested in python programming. The overall sentiments are in line with what i felt about this module."
     })
     await cs1010s.save();
-    console.log(cs1010s)
-    mongoose.connection.close();
 }
 
-seedDB();
-seedModule();
+seedDB().then(() => {
+    seedModule().then(() => {
+        mongoose.connection.close();
+    })
+})
