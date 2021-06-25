@@ -42,7 +42,7 @@
 
 ### Built With
 
-* HTML
+* HTML/EJS
 * CSS
 * Node.js
 * Express
