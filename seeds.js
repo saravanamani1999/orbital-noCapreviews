@@ -1,13 +1,23 @@
 const mongoose = require('mongoose');
 const Module = require('./models/module');
-const moduleInfo = require('./moduleInfo.json')
+const moduleInfo = require('./moduleInfo.json');
+const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
+
 
 // CONNECTING TO MONGODB
-mongoose.connect('mongodb://localhost:27017/noCap', {
+// mongoose.connect('mongodb://localhost:27017/noCap', {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+// });
+mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
 });
+
+
+
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -55,3 +65,4 @@ seedDB().then(() => {
         mongoose.connection.close();
     })
 })
+
