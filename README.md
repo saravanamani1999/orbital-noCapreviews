@@ -71,12 +71,19 @@ To get a local copy up and running follow these simple steps.
    ```
 
 ### Setup
+1. Start the MongoDB database on ur terminal and leave it running
+    ```sh
+    mongod
+    ```
 
-1. Run the seeds.js file in order to place sample data into the database
+2. Run seeds.js on another terminal in order to place sample data into the database.
+Wait for a response "seed finished running" on the console.
     ```sh
     node seeds.js
     ```
-2. To run the web application call the following command and navigate to http://localhost:3000/
+  
+
+3. To run the web application call the following command and navigate to http://localhost:3000/
     ```sh
     node app.js
     ```

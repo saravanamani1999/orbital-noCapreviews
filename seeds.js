@@ -52,6 +52,7 @@ const seedModule = async() => {
 
 seedDB().then(() => {
     seedModule().then(() => {
+        console.log("seed finished running")
         mongoose.connection.close();
     })
 })
