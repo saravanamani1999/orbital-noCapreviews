@@ -17,12 +17,6 @@ const moduleInfo = require('./moduleInfo.json')
     //const { isLoggedIn } = require('./middleware');
     //const catchAsync = require('./utils/catchAsync');
 
-//CONNECTING TO MONGODB
-// mongoose.connect('mongodb://localhost:27017/noCap', {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-// });
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
