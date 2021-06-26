@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="./static/images/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="./static/images/logo.jpg" alt="Logo" width="200" height="80">
 
   <h3 align="center">noCapReviews</h3>
 
@@ -42,7 +42,7 @@
 
 ### Built With
 
-* HTML
+* HTML/EJS
 * CSS
 * Node.js
 * Express
