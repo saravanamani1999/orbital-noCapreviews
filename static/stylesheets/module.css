@@ -1,261 +1,326 @@
 body {
-  background-color: #282828;
-  display: flex;
-  flex-direction: column;
-  margin: 0.2em 1em;
-  font-family: Inter, sans-serif;
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em 1em;
+    font-family: Inter, sans-serif;
 }
 
 hr {
-  width: 100%;
-  color: #777777;
+    width: 100%;
+    color: #777777;
 }
 
 h2 {
-  color: #026CBE;
-  font-weight: 600;
-  font-family: Inter, sans-serif;
-  margin-top: 1em;
-  margin-bottom: 0.1em;
+    color: #026CBE;
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    margin-top: 1em;
+    margin-bottom: 0.1em;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
 }
 
 .logo {
-  display: flex;
+    display: flex;
 }
 
 .logo #logo {
-  width: 14em;
+    width: 17.5em;
 }
 
 .search {
-  width: 20%;
-  display: flex;
-  align-items: center;
+    width: 20%;
+    display: flex;
+    align-items: center;
 }
 
 .search #search {
-  width: 100%;
+    width: 100%;
 }
 
 .search #search-bar {
-  border: 1px solid black;
-  border-radius: 2em;
-  height: 2.5em;
-  width: 100%;
-  padding: 1em;
-  background-color: #DFDFDF;
-  font-size: 1em;
+    border: 1px solid black;
+    border-radius: 2em;
+    height: 2.5em;
+    width: 100%;
+    padding: 1em;
+    background-color: #DFDFDF;
+    font-size: 1em;
 }
 
 #search-bar::placeholder {
-  color: black;
-  font-family: Inter, sans-serif;
-  font-weight: 400;
+    color: black;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
 }
 
 .mod {
-  padding-top: 15px;
-  padding-bottom: 0;
-  font-family: Inter, sans-serif;
+    padding-top: 15px;
+    padding-bottom: 0;
+    font-family: Inter, sans-serif;
 }
 
-.mod h1{
-  font-size: 2em;
-  font-weight: 600;
-  color: #026CBE;
-  margin-bottom: 0;
+.mod h1 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #026CBE;
+    margin-bottom: 0;
 }
 
-.mod h1 span{
-  color: #777777;
+.mod h1 span {
+    color: #777777;
 }
 
-.details1, .details2 {
-  padding-top: 0;
-  color: #777777;
-  font-family: Inter, sans-serif;
-  font-size: 1.3em;
+.details1,
+.details2 {
+    padding-top: 0;
+    color: #777777;
+    font-family: Inter, sans-serif;
+    font-size: 1.3em;
 }
 
 .details1 h5 {
-   margin-top: 5px;
-   margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .details2 h5 {
-   margin-top: 0;
-   margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 30px;
 }
 
 .Description1 h2 {
-  margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .Description2 p {
-  width: 75%;
-  color: #C9C9C9;
-  font-family: Roboto, sans-serif;
-  font-size: 1.1em;
-  line-height: 1.5em;
+    width: 75%;
+    color: #C9C9C9;
+    font-family: Roboto, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
 }
 
 .Sentiment {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .Sentiment2 {
-  margin-bottom : 1em;
-  display: flex;
-
+    margin-bottom: 1em;
+    display: flex;
 }
 
 .Sentiment2 .titles h2 {
-  color : #777777;
-  margin-bottom: 3em;
+    color: #777777;
+    margin-bottom: 3em;
 }
 
 .Sentiment2 .titles h2:nth-last-of-type(1) {
-  color : #777777;
-  margin-bottom: 0.5em;
+    color: #777777;
+    margin-bottom: 0.5em;
 }
 
-
 .Sentiment2 .ratings {
-  margin-left: 3em;
+    margin-left: 3em;
 }
 
 .Sentiment2 .ratings .rating {
-  margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .Sentiment2 .ratings img {
-  width: 4.5em;
-  margin: 0 0.66em;
+    width: 4.5em;
+    margin: 0 0.66em;
 }
 
 .Forum {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .Forum2 .comment {
-  display: flex;
+    display: flex;
 }
-
 
 .Forum2 .comment img {
-  width : 5em;
-  padding-bottom: 5.5em;
+    width: 5em;
+    padding-bottom: 5.5em;
 }
 
-.Forum2  .comment .content .details {
-  display: flex;
+.Forum2 .comment .content .details {
+    display: flex;
 }
+
 .Forum2 .comment .content {
-  margin-left: 1em;
-}
-.Forum2 .comment .content .details h3 {
-  color: #026CBE;
-  margin: 0;
-  margin-right: 0.5em;
-  font-weight: 700;
+    margin-left: 1em;
 }
 
-.badge {
-  border : 0.5px solid;
-  border-radius : 25px;
-  padding: 0.2em 0.6em 0.15em 0.6em;
-  font-weight: bold;
-  font-size: 0.9em;
-  margin-right: 0.5em;
-  background-color: #78F975;
+.Forum2 .comment .content .details h3 {
+    color: #026CBE;
+    margin: 0;
+    margin-right: 0.5em;
+    font-weight: 700;
+}
+
+.badge-1 {
+    border: 0.5px solid;
+    border-radius: 25px;
+    padding: 0.2em 0.6em 0.15em 0.6em;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    background-color: #78F975;
+}
+
+.badge-2 {
+    border: 0.5px solid;
+    border-radius: 25px;
+    padding: 0.2em 0.6em 0.15em 0.6em;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    background-color: #F97575;
 }
 
 .Forum2 .comment .content p {
-  font-size: 1.1em;
-  font-family: Roboto, sans-serif;
-  color: #C9C9C9;
-  width: 75%;
-  line-height: 1.5em;
+    font-size: 1.1em;
+    font-family: Roboto, sans-serif;
+    color: #C9C9C9;
+    width: 75%;
+    line-height: 1.5em;
 }
 
-.ui-autocomplete {
-position: absolute;
-top: 100%;
-left: 0;
-z-index: 1000;
-float: left;
-display: none;
-min-width: inherit;
-min-height: inherit;
-padding: 4px 0;
-margin: 0 0 10px 25px;
-list-style: none;
-background-color: #DFDFDF;
-border-color: #ccc;
-border-color: rgba(0, 0, 0, 0.2);
-border-style: solid;
-border-width: 1px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
--webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
--moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
--webkit-background-clip: padding-box;
--moz-background-clip: padding;
-background-clip: padding-box;
-*border-right-width: 2px;
-*border-bottom-width: 2px;
-font-size: 1.3em;
+.Forum2 h2 {
+    color: #777777;
+    margin: 1em 0 0.5em;
 }
 
-.ui-menu-item > a.ui-corner-all {
-display: block;
-padding: 3px 15px;
-clear: both;
-font-weight: normal;
-line-height: 18px;
-color: #555555;
-white-space: nowrap;
-text-decoration: none;
+#body-label {
+    display: block;
+    color:#026CBE;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin: 0.5em 0 0.5em;
 }
 
-.ui-state-hover, .ui-state-active {
-color: #ffffff;
+.Forum2 #body {
+    display: block;
+    width: 80%;
+    height: 4em;
+    border: 1px solid black;
+    border-radius: 1em;
+    background-color: #DFDFDF;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 1em 0 0.5em;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;;
+}
 
-text-decoration: none;
-background-color: #808080;
-border-radius: 0px;
--webkit-border-radius: 0px;
--moz-border-radius: 0px;
-background-image: none;
+.Forum2 #body::placeholder {
+    color:#282828;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.Forum2 .userDetails {
+    color: #a8a8a8;
+    font-weight: 600;
+}
+
+#author {
+    width: 10em;
+    font-size: 1em;
+    font-weight: 500;
+    height: 1em;
+    padding: 0.5em 1em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#author::placeholder {
+    font-weight: 500;
+    color: black;
+}
+
+#semester {
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0.5em 0.5em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#major {
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0.5em 0.5em;
+    border: 1px solid black;
+    border-radius: 0.8em;
+    background-color: #DFDFDF;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+#major::placeholder {
+    font-weight: 500;
+    color: black;
+}
+
+#comment-button {
+    background-color:#026CBE;
+    color: black;
+    height: 3em;
+    border: 1px solid black;
+    border-radius: 1.1em;
+    font-size: 0.8em;
+    font-weight: 600;
+    width: 7em;
 }
 
 #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: #808080; /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 40px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
-  text-align: center;
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color: #808080;
+    /* Set a background color */
+    color: white;
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 40px;
+    /* Rounded corners */
+    font-size: 18px;
+    /* Increase font size */
+    text-align: center;
 }
 
 #myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+    background-color: #555;
+    /* Add a dark-grey background on hover */
 }

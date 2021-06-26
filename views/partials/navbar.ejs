@@ -1,10 +1,12 @@
 <div class="navbar">
     <div class="logo">
-      <img src="/images/logo.jpg" alt="noCapReviews Logo" id="logo">
+        <form action="/" method='POST'>
+            <input type="image" src="/images/logo.jpg" alt="noCapReviews Logo" id="logo">
+        </form>
     </div>
     <div class="search">
-      <form id="search" action="/cs1010s" method="get">
-        <input id="search-bar" type="search" placeholder="Search for modules" type="text">
+        <form id="search" action="/searchModules" method="get">
+            <input id="search-bar" name="q" type="search" placeholder="Search for modules" ">
       </form>
     </div>
   </div>
