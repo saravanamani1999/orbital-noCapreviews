@@ -1,3 +1,4 @@
+require('dotenv').config();
 // IMPORTING RELEVANT MODULES
 const express = require('express');
 const path = require('path');
@@ -147,6 +148,9 @@ app.use((err, req, res, next) => {
 
 
 // BINDS AND LISTENS FOR CONNECTION
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
-});
+// app.listen(3000, () => {
+//     console.log('Serving on port 3000')
+// });
+
+const port = process.env.PORT || 3000;
+app.listen(port);
