@@ -1,16 +1,26 @@
-.error {
-    display: flex;
-    height: 100vh;
-    align-items: start;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 10em;
-}
+ .error {   
+    /* display: flex; */
+    /* display: absolute; */
+    /* height: 100vh; */
+    /* align-items: start; */
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    /* margin-top: 10em; */
+    margin-top: 10%;
+
+}  
+
 
 #sweat {
-    width: 22em;
+    width: 30em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #error-message {
-    margin-left: 10em;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
 }
