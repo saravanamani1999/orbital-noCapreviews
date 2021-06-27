@@ -4,6 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const app = express();
+const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
+let PORT = process.env.PORT || 3000;
 //const passport = require('passport');
 //const LocalStrategy = require('passport-local');
 //const flash = require('connect-flash');
@@ -15,8 +17,7 @@ const moduleInfo = require('./moduleInfo.json')
     //const { isLoggedIn } = require('./middleware');
     //const catchAsync = require('./utils/catchAsync');
 
-// CONNECTING TO MONGODB
-mongoose.connect('mongodb://localhost:27017/noCap', {
+mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
@@ -147,6 +148,6 @@ app.use((err, req, res, next) => {
 
 
 // BINDS AND LISTENS FOR CONNECTION
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('Serving on port 3000')
 });

@@ -30,7 +30,8 @@ h2 {
 }
 
 .logo #logo {
-    width: 17.5em;
+    /* width: 17.5em; */
+    width: 100%;
 }
 
 .search {
