@@ -1,89 +1,77 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-    <img src="./static/images/logo.jpg" alt="Logo" width="200" height="80">
+# noCapReviews
 
-  <h3 align="center">noCapReviews</h3>
-
-  <p align="center">
-    Web application to provide ratings and reviews for undergraduates to make more informed decisions when it comes to module planning
-    <br />
-    <br />
-  </p>
-</p>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#setup">Setup</a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
-
-
+![Project Banner](/github_imgs/github-banner.png)\
+<img src="github_imgs/js.png" alt="Javascript Logo" width="40" height="40">
+<img src="github_imgs/nodejs.png" alt="Javascript Logo" width="60" height="40">
+<img src="github_imgs/html.png" alt="Html Logo" width="40" height="40">
+<img src="github_imgs/css.png" alt="CSS Logo" width="40" height="40">
+<img src="github_imgs/mongodb.png" alt="MongoDB Logo" width="40" height="40">
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About
 
-### Built With
+noCapReviews is a simple web application aiming to provide insightful information to undergraduates about modules they are interested in, enabling them to make more informed decisions when it comes to module planning
 
-* HTML/EJS
-* CSS
-* Node.js
-* Express
-* MongoDB - Mongoose
+This project is developed for a 1st year summer self-directed, independent work course [Orbital](https://orbital.comp.nus.edu.sg/) by the School of Computing at the National University of Singapore
+
+## Features
+
+* Search for Modules
+* Web-based Forum
+* Rating of Modules through Sentimental Analysis (Stil in development)
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+noCapReviews is currently hosted on Heroku and can be found [here](https://nocap-reviews.herokuapp.com/)
+
+However if you want to get a local copy up and running, follow these simple steps
 
 ### Prerequisites
 
-* node.js
-* MongoDB
+* [node.js](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/try/download/community)
 
 ### Installation
 
 1. Clone the repo
+
    ```sh
    git clone https://github.com/wuchuank/orbital-noCapreviews.git
    ```
-2. Install NPM packages
+
+2. Install npm packages
+
    ```sh
    npm install
    ```
 
 ### Setup
 
-1. Run the seeds.js file in order to place sample data into the database
+1. Start the MongoDB database on ur terminal and leave it running
+  
+    ```sh
+    mongod
+    ```
+
+2. Run seeds.js on another terminal.\
+Wait for a response "seed finished running" on the console.
+(*this only needs to be run once*)
+
     ```sh
     node seeds.js
     ```
-2. To run the web application call the following command and navigate to http://localhost:3000/
+  
+3. To run the web application call the following command and navigate to http://localhost:3000/
+
     ```sh
     node app.js
     ```
 
+## More about the project
 
+To learn more about the project, follow these links
 
-
-
-
-
+[readme](https://drive.google.com/file/d/1YeT0F7l5ZOquf1s-SgLVrhjyoqmASj8e/view?usp=sharing) |
+[poster](https://drive.google.com/file/d/1EERRwOYVSrI7gO0oQh801V9utkrydJ3h/view?usp=sharing) |
+[video](https://drive.google.com/file/d/1LMQbyUIguVMv_hY-UxWvfCgW92aNocjY/view?usp=sharing)

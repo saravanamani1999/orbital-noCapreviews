@@ -16,10 +16,11 @@ let PORT = process.env.PORT || 3000;
 // IMPORT FUNCTIONS AND FILES
 const Module = require('./models/module');
 const moduleInfo = require('./moduleInfo.json')
-    //const User = require('./models/user');
-    //const { isLoggedIn } = require('./middleware');
-    //const catchAsync = require('./utils/catchAsync');
+//const User = require('./models/user');
+//const { isLoggedIn } = require('./utils/middleware');
+//const catchAsync = require('./utils/catchAsync');
 
+// Change dbURI to mongodb://localhost:27017/noCap if running it in local
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -161,5 +162,5 @@ app.use((err, req, res, next) => {
 
 // BINDS AND LISTENS FOR CONNECTION
 app.listen(PORT, () => {
-    console.log('Serving on port 3000')
+    console.log(`Serving on port ${PORT}`)
 });
