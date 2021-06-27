@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Module = require('./models/module');
 const moduleInfo = require('./moduleInfo.json');
+const dotenv = require('dotenv');
+dotenv.config();
 const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, {
