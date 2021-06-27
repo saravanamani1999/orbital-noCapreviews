@@ -14,7 +14,7 @@ let PORT = process.env.PORT || 3000;
 const Module = require('./models/module');
 const moduleInfo = require('./moduleInfo.json')
 //const User = require('./models/user');
-//const { isLoggedIn } = require('./middleware');
+//const { isLoggedIn } = require('./utils/middleware');
 //const catchAsync = require('./utils/catchAsync');
 
 // Change dbURI to mongodb://localhost:27017/noCap if running it in local
