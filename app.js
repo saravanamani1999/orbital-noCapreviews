@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
-const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority`;
 let PORT = process.env.PORT || 3000;
 
 //const passport = require('passport');
@@ -164,3 +164,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Serving on port ${PORT}`)
 });
+
+module.exports = app;
