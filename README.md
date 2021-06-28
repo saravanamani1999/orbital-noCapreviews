@@ -1,6 +1,8 @@
 # noCapReviews
-
-![Project Banner](/github_imgs/github-banner.png)\
+<a href="https://nocap-reviews.herokuapp.com/">
+<img src="github_imgs/github-banner.png" alt="Project Banner">
+</a>
+<br>
 <img src="github_imgs/js.png" alt="Javascript Logo" width="40" height="40">
 <img src="github_imgs/nodejs.png" alt="Javascript Logo" width="60" height="40">
 <img src="github_imgs/html.png" alt="Html Logo" width="40" height="40">
