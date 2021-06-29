@@ -75,6 +75,6 @@ Wait for a response "seed finished running" on the console.
 
 To learn more about the project, follow these links
 
-[readme](https://drive.google.com/file/d/1YeT0F7l5ZOquf1s-SgLVrhjyoqmASj8e/view?usp=sharing) |
-[poster](https://drive.google.com/file/d/1EERRwOYVSrI7gO0oQh801V9utkrydJ3h/view?usp=sharing) |
-[video](https://drive.google.com/file/d/1LMQbyUIguVMv_hY-UxWvfCgW92aNocjY/view?usp=sharing)
+[readme](https://drive.google.com/file/d/1f1AS1vjUYV06J2cjqtrh6IK-8UCjg9pa/view?usp=sharing) |
+[poster](https://drive.google.com/file/d/1HZKVawQxFTziEO7I7tvN-j6oPbasZ-MT/view?usp=sharing) |
+[video](https://drive.google.com/file/d/1QS7aH8rX26W99Z8chZaHqEWJvpfPOV5y/view?usp=sharing)
