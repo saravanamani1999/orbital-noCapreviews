@@ -57,7 +57,3 @@ const majors = [
 ];
 
 module.exports = majors;
-
-for (major of majors) {
-  console.log(major);
-}
