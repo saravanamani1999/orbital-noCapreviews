@@ -37,61 +37,9 @@
               required
             />
             <datalist id="listOfMajors">
-              <option value="Architecture"></option>
-              <option value="Biomedical Engineering"></option>
-              <option value="Business Administration"></option>
-              <option value="Business Administration (Accountancy)"></option>
-              <option value="Business Analytics"></option>
-              <option value="Chemical Engineering"></option>
-              <option value="Chemistry"></option>
-              <option value="Chinese Language"></option>
-              <option value="Chinese Studies"></option>
-              <option value="Civil Engineering"></option>
-              <option value="Communications and New Media"></option>
-              <option value="Computer Engineering"></option>
-              <option value="Computer Science"></option>
-              <option value="Data Science and Analytics"></option>
-              <option value="Dentistry"></option>
-              <option value="Economics"></option>
-              <option value="Electrical Engineering"></option>
-              <option value="Engineering Science"></option>
-              <option value="English Language and Humanities"></option>
-              <option value="English Literature"></option>
-              <option value="Environmental Engineering"></option>
-              <option value="Food Science and Technology"></option>
-              <option value="Geography"></option>
-              <option value="Global Studies"></option>
-              <option value="History"></option>
-              <option value="Industrial Design"></option>
-              <option value="Industrial and Systems Engineering"></option>
-              <option value="Information Security"></option>
-              <option value="Information Systems"></option>
-              <option value="Japanese Studies"></option>
-              <option value="Landscape Architecture"></option>
-              <option value="Law"></option>
-              <option value="Life Sciences"></option>
-              <option value="Malay Studies"></option>
-              <option value="Material Science & Engineering"></option>
-              <option value="Mathematics"></option>
-              <option value="Mechanical Engineering"></option>
-              <option value="Medicine"></option>
-              <option value="Music"></option>
-              <option value="Nursing"></option>
-              <option value="Pharmaceutical Science"></option>
-              <option value="Pharmacy"></option>
-              <option value="Philosophy"></option>
-              <option value="Physics"></option>
-              <option value="Political Science"></option>
-              <option value="Project & Facilities Management"></option>
-              <option value="Psychology"></option>
-              <option value="Quantitative Finance"></option>
-              <option value="Real Estate"></option>
-              <option value="Social Work"></option>
-              <option value="Sociology"></option>
-              <option value="South Asian Studies"></option>
-              <option value="Southeast Asian Studies"></option>
-              <option value="Statistics"></option>
-              <option value="Theatre and Performance Studies"></option>
+              <% for (major of majors) { %> 
+                <option value="<%= major %>"></option>
+              <% } %> 
             </datalist>
           </div>
           <div class="col-md-12 mb-2">
@@ -128,10 +76,10 @@
     </div>
   <% } %> 
   <!-- Listing out all comments that exist -->
-  <div class="row g-0 mt-3">
+  <div class="row g-2 mt-3">
     <% for (comment of comments.forum) { %>
     <article class="card bg-transparent border-dark col-12">
-      <div class="row">
+      <div class="row mt-2">
         <div class="col-md-1 me-1">
           <img src="/images/mizkifjog.gif" alt="userProfileImage" class="userImage" />
         </div>

@@ -1,9 +1,9 @@
 // IMPORTING RELEVANT MODULES
-const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const dotenv = require('dotenv');
+const express = require("express");
+const path = require("path");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority`;
@@ -15,8 +15,9 @@ let PORT = process.env.PORT || 3000;
 //const session = require('express-session');
 
 // IMPORT FUNCTIONS AND FILES
-const Module = require('./models/module');
-const moduleInfo = require('./moduleInfo.json')
+const Module = require("./models/module");
+const moduleInfo = require("./data/moduleInfo.json");
+const majors = require("./data/majors.js");
 //const User = require('./models/user');
 //const { isLoggedIn } = require('./utils/middleware');
 //const catchAsync = require('./utils/catchAsync');
@@ -29,19 +30,17 @@ const moduleInfo = require('./moduleInfo.json')
 // });
 
 //CONNECTING TO MONGODB LOCALLY
-mongoose.connect('mongodb://localhost:27017/noCap', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
+mongoose.connect("mongodb://localhost:27017/noCap", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
-    console.log("Database connected");
+  console.log("Database connected");
 });
-
-
 
 // SESSION CONFIGURATION
 // const sessionConfig = {
@@ -66,14 +65,13 @@ db.once("open", () => {
 // passport.deserializeUser(User.deserializeUser());
 
 // CONFIGURATIONS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'))
-
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // MIDDLEWARE OR FUNCTIONS
 app.use(express.urlencoded({ extended: true })); //parsing req.body
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "static")));
 
 // app.use((req, res, next) => {
 //     res.locals.currentUser = req.user;
@@ -83,38 +81,41 @@ app.use(express.static(path.join(__dirname, 'static')));
 // })
 
 // ROUTES
-app.get('/', (req, res) => {
-    res.render('index')
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-app.post('/', (req, res) => {
-    res.redirect('/')
+app.post("/", (req, res) => {
+  res.redirect("/");
 });
 
-app.get('/searchModules', (req, res) => {
-    res.redirect(`/${req.query.q}`)
+app.get("/searchModules", (req, res) => {
+  res.redirect(`/${req.query.q}`);
 });
 
-app.get('/:moduleCode', async(req, res) => {
-    const { moduleCode } = req.params;
-    // Getting the specific module information from moduleInfo.json based on moduleCode 
-    const data = moduleInfo.filter(module => module.moduleCode === moduleCode.toUpperCase())[0];
-    if (typeof data === undefined) { //if module not found in json
-        res.render('error')
-    }
-    // Querying MongoDB for specific module properties based on moduleCode
-    const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
-    res.render('module', { data, comments })
+app.get("/:moduleCode", async (req, res) => {
+  const { moduleCode } = req.params;
+  // Getting the specific module information from moduleInfo.json based on moduleCode
+  const data = moduleInfo.filter(
+    (module) => module.moduleCode === moduleCode.toUpperCase()
+  )[0];
+  if (typeof data === undefined) {
+    //if module not found in json
+    res.render("error");
+  }
+  // Querying MongoDB for specific module properties based on moduleCode
+  const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
+  res.render("module", { data, comments, majors });
 });
 
-app.post('/:moduleCode/newComment', async(req, res) => {
-    const { moduleCode } = req.params;
-    const { author, semester, major, body } = req.body;
-    const module = await Module.findOne({ code: moduleCode.toUpperCase() });
-    module.forum.push(req.body)
-    module.save();
-    res.redirect(`/${moduleCode}`)
-})
+app.post("/:moduleCode/newComment", async (req, res) => {
+  const { moduleCode } = req.params;
+  const { author, semester, major, body } = req.body;
+  const module = await Module.findOne({ code: moduleCode.toUpperCase() });
+  module.forum.push(req.body);
+  module.save();
+  res.redirect(`/${moduleCode}`);
+});
 
 // USER ROUTES
 // app.get('/register', (req, res) => {
@@ -155,15 +156,14 @@ app.post('/:moduleCode/newComment', async(req, res) => {
 // });
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500 } = err;
-    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-    res.status(statusCode).render('error', { err })
-})
-
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Oh No, Something Went Wrong!";
+  res.status(statusCode).render("error", { err });
+});
 
 // BINDS AND LISTENS FOR CONNECTION
 app.listen(PORT, () => {
-    console.log(`Serving on port ${PORT}`)
+  console.log(`Serving on port ${PORT}`);
 });
 
 module.exports = app;
