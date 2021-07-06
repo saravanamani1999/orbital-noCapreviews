@@ -104,7 +104,7 @@ app.get('/:moduleCode', async(req, res) => {
     }
     // Querying MongoDB for specific module properties based on moduleCode
     const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
-    res.render('newModule', { data, comments })
+    res.render('module', { data, comments })
 });
 
 app.post('/:moduleCode/newComment', async(req, res) => {
