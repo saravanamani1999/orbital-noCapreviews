@@ -1,52 +1,117 @@
-<div class="Forum">
-    <h2>Forum</h2>
-    <hr />
-    <div class="Forum2">
-        <!-- Create a new comment code below -->
-        <form action="<%= data.moduleCode %>/newComment" , method="POST">
-            <label for="body" id="body-label">Join the discussion here</label>
-            <div>
-                <label for="author" class="userDetails">Username</label>
-                <input type="text" placeholder="Username" name="author" id="author" required />
-                <label for="semester" class="userDetails">Select the semester you took in the module in</label>
-                <select name="semester" id="semester" required>
-                    <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
-                    <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
-                    <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
-                    <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
-                </select>
-                <label for="major" class="userDetails">Select your major</label>
-                <input type="text" placeholder="Type your major here" name="major" id="major" required />
-                <button id="comment-button">Submit</button>
-            </div>
-            <input type="text" placeholder="Comment here..." name="body" id="body" required />
-        </form>
-        <!-- Display number of comments -->
-        <h2>
-            <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`
-                %>
-        </h2>
-        <!-- Listing out all comments that exist -->
-        <% for (comment of comments.forum) { %>
-            <div class="comment">
-                <img src="/images/cap-filled.png" alt="user-dp" />
-                <div class="content">
-                    <div class="details">
-                        <h3>
-                            <%= comment.author %>
-                        </h3>
-                        <span class="badge-1">
-                            <%= comment.semester %>
-                        </span>
-                        <span class="badge-2">
-                            <%= comment.major %>
-                        </span>
-                    </div>
-                    <p>
-                        <%= comment.body %>
-                    </p>
-                </div>
-            </div>
-            <% } %>
+<section class="text-light" id="forum">
+  <h2>Forum</h2>
+  <hr />
+  <!-- Create a new comment code below -->
+  <article class="card text-light bg-dark">
+    <div class="card-body">
+      <h5 class="card-title text-primary mb-3">Join the discussion here!</h5>
+      <form action="<%= data.moduleCode %>/newComment" method="POST">
+        <div class="row mb-1 g-2">
+          <div class="col-md-4">
+            <label for="username" class="form-label">Username</label>
+            <input
+              class="form-control"
+              type="text"
+              name="author"
+              id="username"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="semester" class="form-label">Semester</label>
+            <select class="form-select" name="semester" id="semester" required>
+              <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
+              <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
+              <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
+              <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="major" class="form-label">Major</label>
+            <input
+              class="form-control"
+              list="listOfMajors"
+              name="major"
+              id="major"
+              placeholder="Type to search.."
+              required
+            />
+            <datalist id="listOfMajors">
+              <option value="Architecture"></option>
+              <option value="Biomedical Engineering"></option>
+              <option value="Business Administration"></option>
+              <option value="Business Administration (Accountancy)"></option>
+              <option value="Business Analytics"></option>
+              <option value="Chemical Engineering"></option>
+              <option value="Chinese Language"></option>
+              <option value="Chinese Studies"></option>
+              <option value="Civil Engineering"></option>
+              <option value="Computer Engineering"></option>
+              <option value="Computer Science"></option>
+              <option value="Dentistry"></option>
+              <option value="Electrical Engineering"></option>
+              <option value="Engineering Science"></option>
+              <option value="English Language and Humanities"></option>
+              <option value="English Literature"></option>
+              <option value="Environmental Engineering"></option>
+              <option value="History"></option>
+              <option value="Industrial Design"></option>
+              <option value="Industrial and Systems Engineering"></option>
+              <option value="Information Security"></option>
+              <option value="Information Systems"></option>
+              <option value="Japanese Studies"></option>
+              <option value="Landscape Architecture"></option>
+              <option value="Law"></option>
+              <option value="Malay Studies"></option>
+              <option value="Material Science & Engineering"></option>
+              <option value="Mechanical Engineering"></option>
+              <option value="Medicine"></option>
+              <option value="Music"></option>
+              <option value="Nursing"></option>
+              <option value="Pharmacy"></option>
+              <option value="Philosophy"></option>
+              <option value="Project & Facilities Management"></option>
+              <option value="Real Estate"></option>
+              <option value="South Asian Studies"></option>
+              <option value="Southeast Asian Studies"></option>
+              <option value="Theatre and Performance Studies"></option>
+            </datalist>
+          </div>
+          <div class="col-md-12 mb-2">
+            <label for="body" class="form-label">Comment</label>
+            <textarea
+              class="form-control"
+              name="body"
+              id="body"
+              rows="3"
+              required
+            >
+            </textarea>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </article>
+  <!-- Display number of comments -->
+  <h2>
+    <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` :
+    `${comments.forum.length} Comments` %>
+  </h2>
+  <!-- Listing out all comments that exist -->
+  <% for (comment of comments.forum) { %>
+  <div class="comment">
+    <img src="/images/cap-filled.png" alt="user-dp" />
+    <div class="content">
+      <div class="details">
+        <h3><%= comment.author %></h3>
+        <span class="badge-1"> <%= comment.semester %> </span>
+        <span class="badge-2"> <%= comment.major %> </span>
+      </div>
+      <p><%= comment.body %></p>
+    </div>
+  </div>
+  <% } %>
+</section>

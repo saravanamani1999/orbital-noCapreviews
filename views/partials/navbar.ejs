@@ -1,12 +1,23 @@
-<div class="navbar">
-    <div class="logo">
-        <form action="/" method='POST'>
-            <input type="image" src="/images/logo.jpg" alt="noCapReviews Logo" id="logo">
-        </form>
-    </div>
-    <div class="search">
-        <form id="search" action="/searchModules" method="get">
-            <input id="search-bar" name="q" type="search" placeholder="Search for modules" ">
-      </form>
-    </div>
+<header
+  class="d-flex justify-content-between flex-column flex-sm-row"
+  id="navbar"
+>
+  <div id="logo">
+    <form action="/" method="POST">
+      <input
+        type="image"
+        src="/images/logo.jpg"
+        alt="noCapReviews Logo"
+        id="logo"
+      />
+    </form>
   </div>
+  <form id="search" action="/searchModules" method="get">
+    <input
+      id="search-bar"
+      name="q"
+      type="search"
+      placeholder="Search for modules"
+    />
+  </form>
+</header>

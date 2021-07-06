@@ -13,6 +13,7 @@ let PORT = process.env.PORT || 3000;
 //const LocalStrategy = require('passport-local');
 //const flash = require('connect-flash');
 //const session = require('express-session');
+
 // IMPORT FUNCTIONS AND FILES
 const Module = require('./models/module');
 const moduleInfo = require('./moduleInfo.json')
@@ -21,18 +22,18 @@ const moduleInfo = require('./moduleInfo.json')
 //const catchAsync = require('./utils/catchAsync');
 
 // Change dbURI to mongodb://localhost:27017/noCap if running it in local
-mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
-
-//CONNECTING TO MONGODB LOCALLY
-// mongoose.connect('mongodb://localhost:27017/noCap', {
+// mongoose.connect(dbURI, {
 //     useNewUrlParser: true,
 //     useCreateIndex: true,
 //     useUnifiedTopology: true
 // });
+
+//CONNECTING TO MONGODB LOCALLY
+mongoose.connect('mongodb://localhost:27017/noCap', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+});
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -70,7 +71,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 
 // MIDDLEWARE OR FUNCTIONS
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); //parsing req.body
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'static')));
 
@@ -103,7 +104,7 @@ app.get('/:moduleCode', async(req, res) => {
     }
     // Querying MongoDB for specific module properties based on moduleCode
     const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
-    res.render('module', { data, comments })
+    res.render('newModule', { data, comments })
 });
 
 app.post('/:moduleCode/newComment', async(req, res) => {

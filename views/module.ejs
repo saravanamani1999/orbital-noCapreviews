@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-    <link rel="stylesheet" href="/stylesheets/module.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto&display=swap" rel="stylesheet">
+  <head>
+    <link rel="stylesheet" href="/stylesheets/module.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="utf-8" />
     <title>noCapReviews | <%= data.moduleCode %></title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-</head>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <%- include('partials/navbar')  %>
-            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-            <div class="mod">
-                <h1>
-                    <%= data.moduleCode %> <span><%= data.title %> </span></h1>
-                <div class="details1">
-                    <h5>
-                        <%= data.department %> •
-                            <%= data.faculty %> •
-                                <%= data.moduleCredit %> MCs</h5>
-                </div>
-                <div class="Description1">
-                    <h2>Description</h2>
-                </div>
-            </div>
-            <hr>
-            <div class="Description2">
-                <p>
-                    <%= data.description %>
-                </p>
-            </div>
-            <%- include('partials/sentiment')  %>
-                <%- include('partials/forum')  %>
+      <%- include('partials/navbar') %>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      <div class="mod">
+        <h1><%= data.moduleCode %> <span><%= data.title %> </span></h1>
+        <div class="details1">
+          <h5>
+            <%= data.department %> • <%= data.faculty %> • <%= data.moduleCredit
+            %> MCs
+          </h5>
+        </div>
+        <div class="Description1">
+          <h2>Description</h2>
+        </div>
+      </div>
+      <hr />
+      <div class="Description2">
+        <p><%= data.description %></p>
+      </div>
+      <%- include('partials/sentiment') %> <%- include('partials/forum') %>
     </div>
-
-</body>
-
+  </body>
 </html>

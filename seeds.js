@@ -5,12 +5,17 @@ const dotenv = require('dotenv');
 dotenv.config();
 const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority`;
 
-mongoose.connect(dbURI, {
+// mongoose.connect(dbURI, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+// });
+
+mongoose.connect('mongodb://localhost:27017/noCap', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
 });
-
 
 
 
