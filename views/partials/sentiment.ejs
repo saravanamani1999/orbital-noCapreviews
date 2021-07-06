@@ -2,20 +2,20 @@
   <h2>Overall Sentiments</h2>
   <hr />
   <article
-    class="d-flex align-items-center flex-column flex-sm-row rating"
+    class="d-flex align-items-center flex-column flex-md-row rating"
     id="difficulty"
   >
     <h3>Difficulty</h3>
     <div>
+      <% for (let i=0; i < comments.ratings.difficulty; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
+      <% } %> <% for (let i=0; i < 5 - comments.ratings.difficulty; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap-gray" />
+      <% } %>
     </div>
   </article>
   <article
-    class="d-flex align-items-center flex-column flex-sm-row rating"
+    class="d-flex align-items-center flex-column flex-md-row rating"
     id="workload"
   >
     <h3>Workload</h3>
@@ -28,7 +28,7 @@
     </div>
   </article>
   <article
-    class="d-flex align-items-center flex-column flex-sm-row rating"
+    class="d-flex align-items-center flex-column flex-md-row rating"
     id="teaching"
   >
     <h3>Teaching Staff</h3>
@@ -41,7 +41,7 @@
     </div>
   </article>
   <article
-    class="d-flex align-items-center flex-column flex-sm-row rating"
+    class="d-flex align-items-center flex-column flex-md-row rating"
     id="overall"
   >
     <h3>Overall Experience</h3>

@@ -5,7 +5,7 @@ body {
 }
 
 hr {
-  width: 80%;
+  width: 100%;
   color: #777777;
   margin: 0.5em 0 1em;
 }
@@ -52,6 +52,10 @@ h2 {
 
 #module h1 {
   font-size: 2em;
+  font-weight: 700;
+}
+
+#module h1 span {
   font-weight: 600;
 }
 
@@ -65,7 +69,7 @@ h2 {
 /* Description */
 
 #description p {
-  width: 75%;
+  width: 80%;
   color: #c9c9c9;
   font-size: 1em;
   line-height: 1.5em;
@@ -93,6 +97,19 @@ h2 {
 }
 
 /* Forum */
-.card {
-  width: 80%;
+.userImage {
+  width: 5em;
+}
+
+#details h3 {
+  color: #026cbe;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+#commentBody {
+  color: #c9c9c9;
+  font-size: 0.99em;
+  line-height: 1.5em;
+  margin-top: 0.5em;
 }
