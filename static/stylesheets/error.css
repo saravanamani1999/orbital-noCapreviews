@@ -1,26 +1,53 @@
- .error {   
-    /* display: flex; */
-    /* display: absolute; */
-    /* height: 100vh; */
-    /* align-items: start; */
-    /* justify-content: center; */
-    /* flex-direction: row; */
-    /* margin-top: 10em; */
-    margin-top: 10%;
-
-}  
-
-
-#sweat {
-    width: 30em;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+body {
+  background-color: #282828;
+  margin: 0 1em;
+  font-family: Inter, sans-serif;
 }
 
-#error-message {
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
+/* Navbar */
+#navbar {
+  margin: 1em 0 2em;
+}
+
+#search {
+  width: 17.5em;
+  display: flex;
+  align-items: center;
+}
+
+#search-bar {
+  border: 1px solid black;
+  border-radius: 2em;
+  height: 2.5em;
+  width: 100%;
+  padding: 1em;
+  background-color: #dfdfdf;
+  font-size: 1em;
+}
+
+#search-bar::placeholder {
+  color: #4d4e50;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+}
+
+/* Error Message */
+#errorMessage {
+  margin-top: 15%;
+}
+
+#errorMessage h1 {
+  font-size: 2.2em;
+}
+
+#errorMessage h5 {
+  font-size: 1em;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  #navbar {
+    align-items: center;
+  }
 }

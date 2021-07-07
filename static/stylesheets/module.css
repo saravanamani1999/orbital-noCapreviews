@@ -40,9 +40,10 @@ h2 {
 }
 
 #search-bar::placeholder {
-  color: black;
+  color: #4d4e50;
   font-family: Inter, sans-serif;
   font-weight: 400;
+  font-size: 100%;
 }
 
 /* Module */
@@ -112,4 +113,23 @@ h2 {
   font-size: 0.99em;
   line-height: 1.5em;
   margin-top: 0.5em;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  #navbar {
+    align-items: center;
+  }
+
+  section {
+    text-align: center;
+  }
+
+  #description p {
+    width: 100%;
+  }
+
+  .userImage {
+    margin-bottom: 1em;
+  }
 }

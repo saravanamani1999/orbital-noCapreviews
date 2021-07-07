@@ -20,7 +20,8 @@ const moduleInfo = require("./data/moduleInfo.json");
 const majors = require("./data/majors.js");
 //const User = require('./models/user');
 //const { isLoggedIn } = require('./utils/middleware');
-//const catchAsync = require('./utils/catchAsync');
+const catchAsync = require("./utils/catchAsync");
+const AppError = require("./utils/appError");
 
 // Change dbURI to mongodb://localhost:27017/noCap if running it in local
 // mongoose.connect(dbURI, {
@@ -90,32 +91,38 @@ app.post("/", (req, res) => {
 });
 
 app.get("/searchModules", (req, res) => {
-  res.redirect(`/${req.query.q}`);
+  res.redirect(`/modules/${req.query.q}`);
 });
 
-app.get("/:moduleCode", async (req, res) => {
-  const { moduleCode } = req.params;
-  // Getting the specific module information from moduleInfo.json based on moduleCode
-  const data = moduleInfo.filter(
-    (module) => module.moduleCode === moduleCode.toUpperCase()
-  )[0];
-  if (typeof data === undefined) {
-    //if module not found in json
-    res.render("error");
-  }
-  // Querying MongoDB for specific module properties based on moduleCode
-  const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
-  res.render("module", { data, comments, majors });
-});
+app.get(
+  "/modules/:moduleCode",
+  catchAsync(async (req, res) => {
+    const { moduleCode } = req.params;
+    // Getting the specific module information from moduleInfo.json based on moduleCode
+    const data = moduleInfo.filter(
+      (module) => module.moduleCode === moduleCode.toUpperCase()
+    )[0];
+    if (!data) {
+      //if module not found in json
+      throw new AppError("Module Not Found", 404);
+    }
+    // Querying MongoDB for specific module properties based on moduleCode
+    const comments = await Module.findOne({ code: moduleCode.toUpperCase() });
+    res.render("module", { data, comments, majors });
+  })
+);
 
-app.post("/:moduleCode/newComment", async (req, res) => {
-  const { moduleCode } = req.params;
-  const { author, semester, major, body } = req.body;
-  const module = await Module.findOne({ code: moduleCode.toUpperCase() });
-  module.forum.push(req.body);
-  module.save();
-  res.redirect(`/${moduleCode}`);
-});
+app.post(
+  "/modules/:moduleCode/newComment",
+  catchAsync(async (req, res) => {
+    const { moduleCode } = req.params;
+    const { author, semester, major, body } = req.body;
+    const module = await Module.findOne({ code: moduleCode.toUpperCase() });
+    module.forum.push(req.body);
+    module.save();
+    res.redirect(`/modules/${moduleCode}`);
+  })
+);
 
 // USER ROUTES
 // app.get('/register', (req, res) => {
@@ -155,10 +162,14 @@ app.post("/:moduleCode/newComment", async (req, res) => {
 //     res.redirect('/');
 // });
 
+app.all("*", (req, res, next) => {
+  next(new AppError("Page Not Found", 404));
+});
+
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
-  if (!err.message) err.message = "Oh No, Something Went Wrong!";
-  res.status(statusCode).render("error", { err });
+  if (!err.message) err.message = "Something Went Wrong!";
+  res.render("error", { err });
 });
 
 // BINDS AND LISTENS FOR CONNECTION
