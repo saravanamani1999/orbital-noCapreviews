@@ -45,6 +45,7 @@ router.post(
     module.forum.push(newComment);
     await newComment.save();
     await module.save();
+    req.flash("success", "Successfully posted your comment!");
     res.redirect(`/modules/${moduleCode}#forum`);
   })
 );
