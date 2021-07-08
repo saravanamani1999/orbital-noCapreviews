@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Module = require("./models/module");
+const Comment = require("./models/comment");
 const moduleInfo = require("./data/moduleInfo.json");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -15,6 +16,7 @@ mongoose.connect("mongodb://localhost:27017/noCap", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
@@ -36,33 +38,44 @@ const seedDB = async () => {
         teachingStaff: 4,
         overallExp: 4,
       },
-      forum: [],
     });
     await dummyModule.save();
   }
 };
 
-const seedModule = async () => {
-  const cs1010s = await Module.findOne({ code: "CS1010S" });
-  cs1010s.forum.push(
-    {
-      author: "Khoo Wu Chuan",
-      semester: "AY 20/21 Sem 2",
-      major: "Business Analytics",
-      body: "Delivery of module is quite different from other modules as it uses the concept of gamification through the Coursemology Platform. Made it less boring to complete the missions and assignments. Workload is pretty heavy with all the missions and consistent effort is definitely needed to do well in this module. Teaching staff are patient and generally willing to help anyone clear their doubts. I agree with the overall sentiment of this module but those with prior experience with python or programming in general would definitely find the module to be easier than the overall sentiment.",
-    },
-    {
-      author: "Mani",
-      semester: "AY 20/21 Sem1",
-      major: "Life Science",
-      body: "It was meant to be an introductory module to programming in python. As a beginner in python programming, I struggled a lot at the start of the module but thanks to the helpful professors and TAs i managed to keep up with the content. Overall it was a good experience and I would recommend you to take this if youre interested in python programming. The overall sentiments are in line with what i felt about this module.",
-    }
-  );
+const seedComment = async () => {
+  // Remove all Comments in mongoDB
+  await Comment.deleteMany({});
+  // Create two sample comments add into CS1010S
+  const comment1 = new Comment({
+    author: "wuchuan",
+    semester: "AY 20/21 Sem 2",
+    major: "Business Analytics",
+    body: "I enjoyed this module very much! The teaching staff were super helpful in clarifying my doubts",
+  });
+  const comment2 = new Comment({
+    author: "mani",
+    semester: "AY 20/21 Sem 1",
+    major: "Life Science",
+    body: "This module was so difficult to handle i dont think i can take anymore",
+  });
+  const cs1010s = await Module.findByCode("cs1010s");
+  cs1010s.forum.push(comment1, comment2);
+  await comment1.save();
+  await comment2.save();
   await cs1010s.save();
 };
 
+// Debugging Code
+// const test = async () => {
+//   await Module.findOneAndUpdate(
+//     { code: "CS1010S" },
+//     { $pull: { forum: "60e69adc9733ea3f5c40de9e" } }
+//   );
+// };
+
 seedDB().then(() => {
-  seedModule().then(() => {
+  seedComment().then(() => {
     console.log("seed finished running");
     mongoose.connection.close();
   });

@@ -1,21 +1,35 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Comment = require("./comment");
 const Schema = mongoose.Schema;
 
-const ModuleSchema = new Schema({
-    code: String,
-    ratings: {
-        difficulty: Number,
-        workload: Number,
-        teachingStaff: Number,
-        overallExp: Number
+const moduleSchema = new Schema({
+  code: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  ratings: {
+    difficulty: Number,
+    workload: Number,
+    teachingStaff: Number,
+    overallExp: Number,
+  },
+  forum: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
     },
-    forum: [{
-        _id: false,
-        author: String,
-        semester: String,
-        major: String,
-        body: String
-    }]
-})
+  ],
+});
 
-module.exports = mongoose.model('Module', ModuleSchema);
+moduleSchema.statics.findByCode = function (moduleCode) {
+  return this.findOne({ code: moduleCode.toUpperCase() });
+};
+
+// const Module = mongoose.model("Module", moduleSchema);
+
+// Module.findByCode("cs1010s").then((res) => {
+//   console.log(res);
+// });
+
+module.exports = mongoose.model("Module", moduleSchema);
