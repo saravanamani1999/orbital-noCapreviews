@@ -120,47 +120,18 @@ app.post(
     const module = await Module.findOne({ code: moduleCode.toUpperCase() });
     module.forum.push(req.body);
     module.save();
-    res.redirect(`/modules/${moduleCode}`);
+    res.redirect(`/modules/${moduleCode}#forum`);
   })
 );
 
-// USER ROUTES
-// app.get('/register', (req, res) => {
-//     res.render('user/register');
-// })
+//USER ROUTES
+app.get("/register", (req, res) => {
+  res.render("user/register");
+});
 
-// app.post('/register', catchAsync(async (req, res, next) => {
-//     try {
-//         const { email, username, password } = req.body;
-//         const user = new User({ email, username });
-//         const registeredUser = await User.register(user, password);
-//         req.login(registeredUser, err => {
-//             if (err) return next(err);
-//             req.flash('success', 'Sucessfully Registered!');
-//             res.redirect('/');
-//         })
-//     } catch (e) {
-//         req.flash('error', e.message);
-//         res.redirect('/register');
-//     }
-// }));
-
-// app.get('/login', (req, res) => {
-//     res.render('users/login');
-// })
-
-// app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-//     req.flash('success', 'Successfully Logged In!');
-//     const redirectUrl = req.session.returnTo || '/';
-//     delete req.session.returnTo;
-//     res.redirect(redirectUrl);
-// })
-
-// app.get('/logout', (req, res) => {
-//     req.logout();
-//     req.flash('success', "Successfully Logged Out!");
-//     res.redirect('/');
-// });
+app.get("/login", (req, res) => {
+  res.render("user/login");
+});
 
 app.all("*", (req, res, next) => {
   next(new AppError("Page Not Found", 404));

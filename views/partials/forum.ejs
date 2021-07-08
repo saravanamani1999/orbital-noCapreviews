@@ -5,7 +5,7 @@
   <article class="card text-light bg-dark">
     <div class="card-body">
       <h5 class="card-title text-primary mb-3">Join the discussion here!</h5>
-      <form action="<%= data.moduleCode %>/newComment" method="POST">
+      <form class="validated-form" action="<%= data.moduleCode %>/newComment" method="POST" novalidate>
         <div class="row mb-1 g-2">
           <div class="col-md-4">
             <label for="username" class="form-label">Username</label>
@@ -16,15 +16,22 @@
               id="username"
               required
             />
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
           </div>
           <div class="col-md-4">
             <label for="semester" class="form-label">Semester</label>
-            <select class="form-select" name="semester" id="semester" required>
-              <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
-              <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
-              <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
-              <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
-            </select>
+            <input class="form-control" list="listOfSemesters" name="semester" id="semester" placeholder="Select a Semester" required>
+            <datalist id="listOfSemesters">
+              <option value="AY 20/21 Sem 2"></option>
+              <option value="AY 20/21 Sem 1"></option>
+              <option value="AY 19/20 Sem 2"></option>
+              <option value="AY 19/20 Sem 1"></option>
+            </datalist>
+            <div class="invalid-feedback">
+              Please choose a semester.
+            </div>
           </div>
           <div class="col-md-4">
             <label for="major" class="form-label">Major</label>
@@ -41,6 +48,9 @@
                 <option value="<%= major %>"></option>
               <% } %> 
             </datalist>
+            <div class="invalid-feedback">
+              Please choose a major.
+            </div>
           </div>
           <div class="col-md-12 mb-2">
             <label for="body" class="form-label">Comment</label>
@@ -49,8 +59,12 @@
               name="body"
               id="body"
               rows="3"
+              placeholder="Ask, validate, and comment on the overall sentiments of the module here.&#10;Feel free to share your personal experiences regarding the module or a teaching staff!"
               required
             ></textarea>
+            <div class="invalid-feedback">
+              Please type a comment.
+            </div>
           </div>
           <div class="col-md-2">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -71,7 +85,7 @@
         <img src="/images/peepochat.gif" alt="chattingGif">
       </div>
       <div class="col-md-7">
-        <h3 class="text-primary">Be the first one to comment on this module!</h3>
+        <h3 id="noCommentMessage">Be the first one to comment on this module!</h3>
       </div>
     </div>
   <% } %> 

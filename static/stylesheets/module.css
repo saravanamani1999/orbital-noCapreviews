@@ -115,6 +115,10 @@ h2 {
   margin-top: 0.5em;
 }
 
+#noCommentMessage {
+  color: #c9c9c9;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
   #navbar {
