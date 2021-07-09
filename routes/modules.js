@@ -3,7 +3,11 @@ const router = express.Router();
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const { validateComment } = require("../utils/middleware");
+const {
+  validateComment,
+  isAuthor,
+  isLoggedIn,
+} = require("../utils/middleware");
 
 const moduleInfo = require("../data/moduleInfo.json");
 const majors = require("../data/majors.js");
@@ -30,6 +34,8 @@ router.get(
     }
     // Querying MongoDB for specific module properties based on moduleCode
     const comments = await Module.findByCode(moduleCode).populate("forum");
+    // Store currenturl for login returnTo
+    req.session.returnTo = req.originalUrl;
     res.render("module", { data, comments, majors });
   })
 );
@@ -53,25 +59,29 @@ router.post(
 router.get(
   "/:moduleCode/:commentId",
   catchAsync(async (req, res) => {
-    const { commentId } = req.params;
+    const { moduleCode, commentId } = req.params;
     const comment = await Comment.findById(commentId);
-    res.render("comment", { comment });
+    res.render("editComment", { moduleCode, commentId, comment, majors });
   })
 );
 
 router.put(
   "/:moduleCode/:commentId",
+  isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { moduleCode, commentId } = req.params;
     const newComment = await Comment.findByIdAndUpdate(commentId, {
       ...req.body.comment,
     });
-    res.redirect(`/modules/${moduleCode}`);
+    res.redirect(`/modules/${moduleCode}#forum`);
   })
 );
 
 router.delete(
   "/:moduleCode/:commentId",
+  isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { moduleCode, commentId } = req.params;
     await Module.findOneAndUpdate(
@@ -79,7 +89,7 @@ router.delete(
       { $pull: { forum: commentId } }
     );
     await Comment.findByIdAndDelete(commentId);
-    res.redirect(`/modules/${moduleCode}`);
+    res.redirect(`/modules/${moduleCode}#forum`);
   })
 );
 

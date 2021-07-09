@@ -8,7 +8,7 @@
     <title>noCapReviews</title>
   </head>
   <body class="container-sm mb-5">
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/navbar') %> <%- include('../partials/flash') %>
     <div class="row">
       <div class="card text-center bg-dark col-4 offset-4 p-4">
         <div class="card-body">
@@ -20,9 +20,14 @@
           <div class="card-title text-light h2 mb-3" id="login">Log in</div>
           <small class="card-text text-white-50">
             New to noCapReviews?
-            <a href="/register" class="link-info ms-1">Sign up here</a>
+            <a href="/user/register" class="link-info ms-1">Register here</a>
           </small>
-          <form class="validated-form" action="/login" method="POST" novalidate>
+          <form
+            class="validated-form"
+            action="/user/login"
+            method="POST"
+            novalidate
+          >
             <div class="form-floating my-3">
               <input
                 class="form-control"

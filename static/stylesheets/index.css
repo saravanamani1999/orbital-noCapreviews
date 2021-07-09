@@ -2,6 +2,12 @@ body {
   background-color: #282828;
 }
 
+.topcorner {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
 #logo {
   min-width: 11em;
   width: 18%;

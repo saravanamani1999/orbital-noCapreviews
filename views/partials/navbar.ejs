@@ -7,7 +7,31 @@
       <img src="/images/logo.jpg" alt="noCapReviews Logo" id="logo" />
     </a>
   </div>
+
   <form id="search" action="/modules/search" method="get">
+    <% if (currentUser) {%>
+    <div class="dropdown">
+      <a
+        class="btn btn-transparent dropdown-toggle shadow-none text-light me-3"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Profile
+        <img
+          class="ms-1"
+          src="https://static-cdn.jtvnw.net/emoticons/v1/301040809/1.0"
+          alt="mizkifSit"
+        />
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+        <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+      </ul>
+    </div>
+    <% } %>
     <input
       class="form-control"
       id="search-bar"

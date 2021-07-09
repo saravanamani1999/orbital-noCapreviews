@@ -1,11 +1,23 @@
 <section class="text-light" id="forum">
   <h2>Forum</h2>
   <hr />
+  
+  <% if (!currentUser) { %> 
+    <!-- Log In Prompt -->
+  <article class= "card text-light bg-dark">
+    <div class="card-body">
+      <h5 class="text-primary d-flex justify-content-between align-items-center">
+        Log in to leave a comment! 
+        <a class="btn btn-primary" href="/user/login" role="button">Log In</a>
+      </h5>
+    </div>
+  </article>
+  <% } else { %>
   <!-- Create a new comment code below -->
   <article class="card text-light bg-dark">
     <div class="card-body">
       <h5 class="card-title text-primary mb-3">Join the discussion here!</h5>
-      <form class="validated-form" action="<%= data.moduleCode %>/comment" method="POST" novalidate>
+      <form class="validated-form" action="/modules/<%= data.moduleCode %>/comment" method="POST" novalidate>
         <div class="row mb-1 g-2">
           <div class="col-md-4">
             <label for="username" class="form-label">Username</label>
@@ -14,6 +26,8 @@
               type="text"
               name="comment[author]"
               id="username"
+              value="<%= currentUser.username %> "
+              readonly
               required
             />
             <div class="invalid-feedback">
@@ -40,6 +54,8 @@
               name="comment[major]"
               id="major"
               placeholder="Type to search.."
+              value= "<%= currentUser.major %> "
+              readonly
               required
             />
             <datalist id="listOfMajors">
@@ -57,7 +73,7 @@
               class="form-control"
               name="comment[body]"
               id="body"
-              rows="3"
+              rows="4"
               placeholder="Ask, validate, and comment on the overall sentiments of the module here.&#10;Feel free to share your personal experiences regarding the module or a teaching staff!"
               required
             ></textarea>
@@ -72,6 +88,7 @@
       </form>
     </div>
   </article>
+  <% } %> 
   <!-- Display number of comments -->
   <h2>
     <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` :
@@ -91,15 +108,15 @@
   <!-- Listing out all comments that exist -->
   <div class="row g-2 mt-3">
     <% for (comment of comments.forum) { %>
-    <article class="card bg-transparent border-dark col-12">
+    <article class="card bg-transparent border-0 col-12 mb-3">
       <div class="row mt-2">
         <div class="col-md-1 me-1">
           <img src="/images/mizkifjog.gif" alt="userProfileImage" class="userImage" />
         </div>
-        <div class="col-md-10 ms-3">
+        <div class="col-md-9 ms-2 me-5">
           <div id="details">
             <h3 class="d-inline me-1"><%= comment.author %></h3>
-            <span class="badge rounded-pill bg-warning text-dark mx-1">
+            <span class="badge rounded-pill bg-info text-dark mx-1">
               <%= comment.semester %>
             </span>
             <span class="badge rounded-pill bg-danger text-dark mx-1"">
@@ -108,6 +125,11 @@
           </div>
           <p id="commentBody"><%= comment.body %></p>
         </div>
+        <%  if( currentUser && comment.author.trim() === currentUser.username.trim())  {%>
+        <div class="col-md-1 ms-5 ps-5 pe-0">
+          <a class="btn btn-sm btn-warning" href="/modules/<%= data.moduleCode %>/<%=comment._id %>"><strong>Edit</strong></a>
+        </div>
+        <% } %> 
       </div>
     </article>
     <% } %>

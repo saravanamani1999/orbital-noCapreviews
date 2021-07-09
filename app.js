@@ -5,15 +5,18 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 
 const dotenv = require("dotenv");
 dotenv.config();
 const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority`;
 
-let PORT = process.env.PORT || 3000;
+const AppError = require("./utils/appError");
 const modules = require("./routes/modules");
+const user = require("./routes/user");
+const User = require("./models/user");
 
-// Change dbURI to mongodb://localhost:27017/noCap if running it in local
 // mongoose.connect(dbURI, {
 //     useNewUrlParser: true,
 //     useCreateIndex: true,
@@ -25,6 +28,7 @@ mongoose.connect("mongodb://localhost:27017/noCap", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
@@ -34,6 +38,7 @@ db.once("open", () => {
 });
 
 const app = express();
+let PORT = process.env.PORT || 3000;
 
 // CONFIGURATIONS
 app.set("view engine", "ejs");
@@ -42,6 +47,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true })); // parsing req.body
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "static"))); // serving static files
+
 const sessionConfig = {
   secret: "secret", // add to dotenv
   resave: false,
@@ -54,7 +60,14 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
@@ -62,22 +75,15 @@ app.use((req, res, next) => {
 
 // ROUTING
 app.use("/modules", modules);
+app.use("/user", user);
 
 app.get("/", (req, res) => {
+  delete req.session.returnTo;
   res.render("index");
 });
 
 app.post("/", (req, res) => {
   res.redirect("/");
-});
-
-//USER ROUTES
-app.get("/register", (req, res) => {
-  res.render("user/register");
-});
-
-app.get("/login", (req, res) => {
-  res.render("user/login");
 });
 
 app.all("*", (req, res, next) => {
@@ -87,6 +93,7 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = "Something Went Wrong!";
+  console.log(err);
   res.render("error", { err });
 });
 

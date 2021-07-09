@@ -8,7 +8,7 @@
     <title>noCapReviews</title>
   </head>
   <body class="container-sm mb-5">
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/navbar') %> <%- include('../partials/flash') %>
     <div class="row">
       <div class="card text-center bg-dark col-4 offset-4 p-4">
         <div class="card-body">
@@ -22,9 +22,26 @@
           </div>
           <small class="card-text text-white-50">
             Already have an account?
-            <a href="/login" class="link-info ms-1">Log in here</a>
+            <a href="/user/login" class="link-info ms-1">Log in here</a>
           </small>
-          <form class="validated-form" action="/login" method="POST" novalidate>
+          <form
+            class="validated-form"
+            action="/user/register"
+            method="POST"
+            novalidate
+          >
+            <div class="form-floating my-3">
+              <input
+                class="form-control"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+              <label class="form-label text-dark" for="email">Email</label>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
             <div class="form-floating my-3">
               <input
                 class="form-control"
@@ -52,6 +69,25 @@
                 >Password</label
               >
               <div class="invalid-feedback">Please type a password.</div>
+            </div>
+            <div class="form-floating my-3">
+              <input
+                class="form-control"
+                list="listOfMajors"
+                name="major"
+                id="major"
+                placeholder="Type to search.."
+                required
+              />
+              <label class="form-label text-dark" for="major">Major</label>
+              <datalist id="listOfMajors">
+                <% for (major of majors) { %>
+                <option value="<%= major %>"></option>
+                <% } %>
+              </datalist>
+              <div class="invalid-feedback">
+                Please choose your current major
+              </div>
             </div>
             <div class="d-grid">
               <button type="submit" class="btn btn-primary">Register</button>
