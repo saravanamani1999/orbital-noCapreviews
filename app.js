@@ -82,10 +82,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/", (req, res) => {
-  res.redirect("/");
-});
-
 app.all("*", (req, res, next) => {
   next(new AppError("Page Not Found", 404));
 });

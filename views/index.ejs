@@ -8,35 +8,39 @@
   </head>
   <body>
     <%- include('partials/flash') %> <% if (currentUser) {%>
-    <div class="topcorner">
-      <div class="dropdown">
-        <a
-          class="
-            btn btn-transparent
-            dropdown-toggle
-            shadow-none
-            text-light
-            me-3
-            mt-2
-          "
-          href="#"
-          role="button"
-          id="dropdownMenuLink"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Profile
-          <img
-            class="ms-1"
-            src="https://static-cdn.jtvnw.net/emoticons/v1/301040809/1.0"
-            alt="mizkifSit"
-          />
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-          <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-        </ul>
-      </div>
+    <div class="d-flex flex-row-reverse dropdown">
+      <a
+        class="
+          btn btn-transparent
+          dropdown-toggle
+          shadow-none
+          text-light
+          me-3
+          mt-2
+        "
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Profile
+        <img
+          class="ms-1"
+          src="https://static-cdn.jtvnw.net/emoticons/v1/301040809/1.0"
+          alt="mizkifSit"
+        />
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <% if (currentUser) { %>
+        <li>
+          <a class="dropdown-item" href="/user/profile">Edit Profile</a>
+        </li>
+        <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+        <% } else { %>
+        <li><a class="dropdown-item" href="/user/login">Log in</a></li>
+        <% } %>
+      </ul>
     </div>
     <% } %>
     <div
@@ -63,12 +67,14 @@
           placeholder="Search modules. Try 'CS1010S'"
         />
       </form>
+      <% if (!currentUser) {%>
       <h5 class="text-light">
         Or you can log in here
         <a class="btn btn-primary ms-3" href="/user/login" role="button"
           >Log In</a
         >
       </h5>
+      <% } %>
     </div>
     <!-- Bootstrap JS -->
     <script

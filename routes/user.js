@@ -5,11 +5,32 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const { validateComment } = require("../utils/middleware");
+const {
+  validateComment,
+  isLoggedIn,
+  isAuthor,
+} = require("../utils/middleware");
 
 const moduleInfo = require("../data/moduleInfo.json");
 const majors = require("../data/majors.js");
 const User = require("../models/user");
+
+router.get("/profile", isLoggedIn, (req, res) => {
+  res.render("user/profile", { majors });
+});
+
+router.put(
+  "/profile",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const { user } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(user._id, { ...user });
+    const redirectUrl = req.session.returnTo || "/";
+    delete req.session.returnTo;
+    req.flash("success", "Successfully updated your major");
+    res.redirect(redirectUrl);
+  })
+);
 
 router.get("/register", (req, res) => {
   res.render("user/register", { majors });
@@ -25,7 +46,7 @@ router.post(
       req.login(registeredUser, (err) => {
         if (err) return next(err);
         req.flash("success", "Successfully registered!");
-        const redirectUrl = `${req.session.returnTo}#forum` || "/";
+        const redirectUrl = req.session.returnTo || "/";
         delete req.session.returnTo;
         res.redirect(redirectUrl);
       });
@@ -50,7 +71,7 @@ router.post(
     req.flash("success", "Successfully logged in!");
     const redirectUrl = req.session.returnTo || "/";
     delete req.session.returnTo;
-    res.redirect(redirectUrl); //return to
+    res.redirect(redirectUrl);
   }
 );
 

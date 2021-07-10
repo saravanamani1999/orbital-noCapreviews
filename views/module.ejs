@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/module.css" />
     <title>noCapReviews | <%= data.moduleCode %></title>
   </head>
-  <body class="container-sm mb-5">
+  <body class="container-sm mb-5 vh-100">
     <%- include('partials/navbar') %> <%- include('partials/flash') %>
     <section id="module">
       <h1>
@@ -23,7 +23,8 @@
       <hr />
       <p><%= data.description %></p>
     </section>
-    <%- include('partials/sentiment') %> <%- include('partials/forum') %>
+    <%- include('partials/sentiment') %> <%- include('partials/forum') %> <%-
+    include('partials/footer') %>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

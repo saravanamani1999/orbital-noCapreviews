@@ -1,8 +1,5 @@
 <% if (success && success.length) { %>
-<div
-  class="alert alert-success alert-dismissible fade show sticky-top"
-  role="alert"
->
+<div class="alert alert-success alert-dismissible fade show" role="alert">
   <img
     class="me-2"
     src="https://cdn.betterttv.net/emote/5980af4e3a1ac5330e89dc76/1x"
@@ -11,7 +8,7 @@
   <%= success %>
   <button
     type="button"
-    class="btn-close"
+    class="btn-close shadow-none"
     data-bs-dismiss="alert"
     aria-label="Close"
   ></button>
@@ -22,10 +19,7 @@
   />
 </div>
 <% } %> <% if (error && error.length) { %>
-<div
-  class="alert alert-danger alert-dismissible fade show sticky-top"
-  role="alert"
->
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <img
     class="me-2"
     src="https://static-cdn.jtvnw.net/emoticons/v1/302306163/1.0"
@@ -45,3 +39,4 @@
   />
 </div>
 <% } %>
+<script src="/scripts/fade.js"></script>

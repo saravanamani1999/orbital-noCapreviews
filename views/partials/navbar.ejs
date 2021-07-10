@@ -9,11 +9,9 @@
   </div>
 
   <form id="search" action="/modules/search" method="get">
-    <% if (currentUser) {%>
     <div class="dropdown">
       <a
         class="btn btn-transparent dropdown-toggle shadow-none text-light me-3"
-        href="#"
         role="button"
         id="dropdownMenuLink"
         data-bs-toggle="dropdown"
@@ -27,11 +25,14 @@
         />
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-        <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+        <% if (currentUser) { %>
+        <li><a class="dropdown-item" href="/user/profile">Edit Profile</a></li>
+        <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+        <% } else { %>
+        <li><a class="dropdown-item" href="/user/login">Log in</a></li>
+        <% } %>
       </ul>
     </div>
-    <% } %>
     <input
       class="form-control"
       id="search-bar"
