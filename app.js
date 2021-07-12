@@ -10,8 +10,8 @@ const LocalStrategy = require("passport-local");
 
 const dotenv = require("dotenv");
 dotenv.config();
-
-const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
+const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
+//const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
 const AppError = require("./utils/appError");
 const modules = require("./routes/modules");
 const user = require("./routes/user");
