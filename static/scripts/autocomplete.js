@@ -105,9 +105,29 @@ var options = {
 
 	getValue: "moduleCode",
 
+	template: {
+		type: "description",
+		fields: {
+			description: "title"
+		}
+
+	},
+
 	list: {
+		maxNumberOfElements: 30,
 		match: {
 			enabled: true
+		},
+		showAnimation: {
+			type: "slide", //normal|slide|fade
+			time: 300,
+			callback: function() {}
+		},
+
+		hideAnimation: {
+			type: "slide", //normal|slide|fade
+			time: 300,
+			callback: function() {}
 		}
 		// onClickEvent: function() {
 		// 	alert("click");
