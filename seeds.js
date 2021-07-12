@@ -4,9 +4,9 @@ const Comment = require("./models/comment");
 const moduleInfo = require("./data/moduleInfo.json");
 const dotenv = require("dotenv");
 dotenv.config();
-const dbURI = "mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority";
 
-//const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
+
+const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
