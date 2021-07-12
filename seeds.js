@@ -4,20 +4,20 @@ const Comment = require("./models/comment");
 const moduleInfo = require("./data/moduleInfo.json");
 const dotenv = require("dotenv");
 dotenv.config();
-const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority`;
+const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
 
-// mongoose.connect(dbURI, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-// });
-
-mongoose.connect("mongodb://localhost:27017/noCap", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
 });
+
+// mongoose.connect("mongodb://localhost:27017/noCap", {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+// });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

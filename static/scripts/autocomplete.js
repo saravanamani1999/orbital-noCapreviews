@@ -109,6 +109,12 @@ var options = {
 		match: {
 			enabled: true
 		}
+		// onClickEvent: function() {
+		// 	alert("click");
+		// 	// router.get("/search", (req, res) => {
+		// 	// 	res.redirect(`/modules/${req.query.q}`);
+		// 	//   });
+		// }
 	},
 	theme: "round"
 };
