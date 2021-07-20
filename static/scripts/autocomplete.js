@@ -105,6 +105,8 @@ var options = {
 
 	getValue: "moduleCode",
 
+	adjustWidth: false,
+
 	template: {
 		type: "description",
 		fields: {
@@ -113,8 +115,19 @@ var options = {
 
 	},
 
+	// template: {
+
+	// 	type:"links",
+	// 	fields: {
+	// 		link: function(event, ui){
+	// 			location.href="/modules/" + ui.moduleCode; 
+	// 		}
+	// 	}
+
+	// },
+
 	list: {
-		maxNumberOfElements: 30,
+		maxNumberOfElements: 10,
 		match: {
 			enabled: true
 		},
