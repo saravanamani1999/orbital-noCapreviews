@@ -103,7 +103,9 @@
 var options = {
 	url: "https://saravanamani1999.github.io/api/moduleInfo.json",
 
-	getValue: "moduleCode",
+	getValue: function(element) {
+		return element.moduleCode;
+	},
 
 	adjustWidth: false,
 
@@ -114,17 +116,6 @@ var options = {
 		}
 
 	},
-
-	// template: {
-
-	// 	type:"links",
-	// 	fields: {
-	// 		link: function(event, ui){
-	// 			location.href="/modules/" + ui.moduleCode; 
-	// 		}
-	// 	}
-
-	// },
 
 	list: {
 		maxNumberOfElements: 10,
@@ -141,13 +132,20 @@ var options = {
 			type: "slide", //normal|slide|fade
 			time: 300,
 			callback: function() {}
+		},
+		onClickEvent: function() {
+			
+			var module = $("#search-bar").getSelectedItemData().moduleCode;
+			// location.href = "http://localhost:3000/modules/" + module;
+			location.href = "https://nocap-reviews.herokuapp.com/modules/" + module;	 
+		},
+		onKeyEnterEvent: function() {
+			
+			var selected= $("#search-bar").getSelectedItemData().moduleCode;
+			// location.href = "http://localhost:3000/modules/" + selected;
+			location.href = "https://nocap-reviews.herokuapp.com/modules/" + selected;	 
 		}
-		// onClickEvent: function() {
-		// 	alert("click");
-		// 	// router.get("/search", (req, res) => {
-		// 	// 	res.redirect(`/modules/${req.query.q}`);
-		// 	//   });
-		// }
+
 	},
 	theme: "round"
 };
