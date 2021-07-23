@@ -4,7 +4,7 @@
     <%- include('../partials/head') %>
     <!-- Local CSS -->
     <link rel="stylesheet" href="/stylesheets/module.css" />
-    <link rel="stylesheet" href="/stylesheets/auth.css" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
     <title>noCapReviews</title>
   </head>
   <body class="container-sm mb-5">
@@ -14,41 +14,32 @@
         <div class="card-body">
           <img
             class="mb-3"
-            src="https://static-cdn.jtvnw.net/emoticons/v1/301310664/3.0"
+            src="https://static-cdn.jtvnw.net/emoticons/v1/301311317/3.0"
             alt="mizkifSit"
           />
-          <div class="card-title text-light h2 mb-3" id="register">
-            Register
+          <div class="card-title text-light h2 mb-3" id="edit">
+            Edit Profile
           </div>
-          <small class="card-text text-white-50">
-            Already have an account?
-            <a href="/user/login" class="link-info ms-1">Log in here</a>
-          </small>
           <form
             class="validated-form"
-            action="/user/register"
+            action="/user/profile?_method=PUT"
             method="POST"
             novalidate
           >
-            <div class="form-floating my-3">
-              <input
-                class="form-control"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                required
-              />
-              <label class="form-label text-dark" for="email">Email</label>
-              <div class="invalid-feedback">Please enter a valid email.</div>
-            </div>
+            <input
+              type="hidden"
+              name="user[_id]"
+              value="<%= currentUser._id %>"
+            />
             <div class="form-floating my-3">
               <input
                 class="form-control"
                 type="text"
                 id="username"
-                name="username"
+                name="user[username]"
                 placeholder="Username"
+                value="<%= currentUser.username %>"
+                readonly
                 required
               />
               <label class="form-label text-dark" for="username"
@@ -56,27 +47,14 @@
               >
               <div class="invalid-feedback">Please type a username.</div>
             </div>
-            <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                required
-              />
-              <label class="form-label text-dark" for="password"
-                >Password</label
-              >
-              <div class="invalid-feedback">Please type a password.</div>
-            </div>
             <div class="form-floating my-3">
               <input
                 class="form-control"
                 list="listOfMajors"
-                name="major"
+                name="user[major]"
                 id="major"
                 placeholder="Type to search.."
+                value="<%= currentUser.major %> "
                 required
               />
               <label class="form-label text-dark" for="major">Major</label>
@@ -90,7 +68,9 @@
               </div>
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Register</button>
+              <button type="submit" class="btn btn-primary">
+                Update Major
+              </button>
             </div>
           </form>
         </div>

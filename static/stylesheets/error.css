@@ -1,26 +1,19 @@
- .error {   
-    /* display: flex; */
-    /* display: absolute; */
-    /* height: 100vh; */
-    /* align-items: start; */
-    /* justify-content: center; */
-    /* flex-direction: row; */
-    /* margin-top: 10em; */
-    margin-top: 10%;
-
-}  
-
-
-#sweat {
-    width: 30em;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+/* Error Message */
+#errorMessage {
+  margin-top: 15%;
 }
 
-#error-message {
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
+#errorMessage h1 {
+  font-size: 2.2em;
+}
+
+#errorMessage h5 {
+  font-size: 1em;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  #navbar {
+    align-items: center;
+  }
 }

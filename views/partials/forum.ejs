@@ -1,52 +1,137 @@
-<div class="Forum">
-    <h2>Forum</h2>
-    <hr />
-    <div class="Forum2">
-        <!-- Create a new comment code below -->
-        <form action="<%= data.moduleCode %>/newComment" , method="POST">
-            <label for="body" id="body-label">Join the discussion here</label>
-            <div>
-                <label for="author" class="userDetails">Username</label>
-                <input type="text" placeholder="Username" name="author" id="author" required />
-                <label for="semester" class="userDetails">Select the semester you took in the module in</label>
-                <select name="semester" id="semester" required>
-                    <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
-                    <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
-                    <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
-                    <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
-                </select>
-                <label for="major" class="userDetails">Select your major</label>
-                <input type="text" placeholder="Type your major here" name="major" id="major" required />
-                <button id="comment-button">Submit</button>
-            </div>
-            <input type="text" placeholder="Comment here..." name="body" id="body" required />
-        </form>
-        <!-- Display number of comments -->
-        <h2>
-            <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` : `${comments.forum.length} Comments`
-                %>
-        </h2>
-        <!-- Listing out all comments that exist -->
-        <% for (comment of comments.forum) { %>
-            <div class="comment">
-                <img src="/images/cap-filled.png" alt="user-dp" />
-                <div class="content">
-                    <div class="details">
-                        <h3>
-                            <%= comment.author %>
-                        </h3>
-                        <span class="badge-1">
-                            <%= comment.semester %>
-                        </span>
-                        <span class="badge-2">
-                            <%= comment.major %>
-                        </span>
-                    </div>
-                    <p>
-                        <%= comment.body %>
-                    </p>
-                </div>
-            </div>
-            <% } %>
+<section class="text-light" id="forum">
+  <h2>Forum</h2>
+  <hr />
+  
+  <% if (!currentUser) { %> 
+    <!-- Log In Prompt -->
+  <article class= "card text-light bg-dark">
+    <div class="card-body">
+      <h5 class="text-primary d-flex justify-content-between align-items-center">
+        Log in to leave a comment! 
+        <a class="btn btn-primary" href="/user/login" role="button">Log In</a>
+      </h5>
     </div>
-</div>
+  </article>
+  <% } else { %>
+  <!-- Create a new comment code below -->
+  <article class="card text-light bg-dark">
+    <div class="card-body">
+      <h5 class="card-title text-primary mb-3">Join the discussion here!</h5>
+      <form class="validated-form" action="/modules/<%= data.moduleCode %>/comment" method="POST" novalidate>
+        <div class="row mb-1 g-2">
+          <div class="col-md-4">
+            <label for="username" class="form-label">Username</label>
+            <input
+              class="form-control"
+              type="text"
+              name="comment[author]"
+              id="username"
+              value="<%= currentUser.username %> "
+              readonly
+              required
+            />
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="semester" class="form-label">Semester</label>
+            <select class="form-select" list="listOfSemesters" name="comment[semester]" id="semester" placeholder="Select a Semester" required>
+              <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
+              <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
+              <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
+              <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
+              </select>
+            <div class="invalid-feedback">
+              Please choose a semester.
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="major" class="form-label">Major</label>
+            <input
+              class="form-control"
+              list="listOfMajors"
+              name="comment[major]"
+              id="major"
+              placeholder="Type to search.."
+              value= "<%= currentUser.major %> "
+              readonly
+              required
+            />
+            <datalist id="listOfMajors">
+              <% for (major of majors) { %> 
+                <option value="<%= major %>"></option>
+              <% } %> 
+            </datalist>
+            <div class="invalid-feedback">
+              Please choose a major.
+            </div>
+          </div>
+          <div class="col-md-12 mb-2">
+            <label for="body" class="form-label">Comment</label>
+            <textarea
+              class="form-control"
+              name="comment[body]"
+              id="body"
+              rows="4"
+              placeholder="Ask, validate, and comment on the overall sentiments of the module here.&#10;Feel free to share your personal experiences regarding the module or a teaching staff!"
+              required
+            ></textarea>
+            <div class="invalid-feedback">
+              Please type a comment.
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </article>
+  <% } %> 
+  <!-- Display number of comments -->
+  <h2>
+    <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` :
+    `${comments.forum.length} Comments` %>
+  </h2>
+  <!-- If no comments exists -->
+  <% if (comments.forum.length === 0) { %> 
+    <div class="row g-0 align-items-center justify-content-center mt-5">
+      <div class="col-md-3">
+        <img src="/images/peepochat.gif" alt="chattingGif">
+      </div>
+      <div class="col-md-7">
+        <h3 id="noCommentMessage">Be the first one to comment on this module!</h3>
+      </div>
+    </div>
+  <% } %> 
+  <!-- Listing out all comments that exist -->
+  <div class="row g-2 mt-3">
+    <% for (comment of comments.forum) { %>
+    <article class="card bg-transparent border-0 col-12 mb-3">
+      <div class="row mt-2">
+        <div class="col-md-1 me-1">
+          <img src="/images/mizkifjog.gif" alt="userProfileImage" class="userImage" />
+        </div>
+        <div class="col-md-9 ms-2 me-5">
+          <div id="details">
+            <h3 class="d-inline me-1"><%= comment.author %></h3>
+            <span class="badge rounded-pill bg-info text-dark mx-1">
+              <%= comment.semester %>
+            </span>
+            <span class="badge rounded-pill bg-danger text-dark mx-1"">
+              <%= comment.major %>
+            </span>
+          </div>
+          <p id="commentBody"><%= comment.body %></p>
+        </div>
+        <%  if( currentUser && comment.author.trim() === currentUser.username.trim())  {%>
+        <div class="col-md-1 ms-5 ps-5 pe-0">
+          <a class="btn btn-sm btn-warning" href="/modules/<%= data.moduleCode %>/<%=comment._id %>"><strong>Edit</strong></a>
+        </div>
+        <% } %> 
+      </div>
+    </article>
+    <% } %>
+  </div>
+</section>

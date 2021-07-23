@@ -1,0 +1,42 @@
+<% if (success && success.length) { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <img
+    class="me-2"
+    src="https://cdn.betterttv.net/emote/5980af4e3a1ac5330e89dc76/1x"
+    alt="successPicture"
+  />
+  <%= success %>
+  <button
+    type="button"
+    class="btn-close shadow-none"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+  <img
+    class="ms-2"
+    src="https://cdn.betterttv.net/emote/5980af4e3a1ac5330e89dc76/1x"
+    alt="successPicture"
+  />
+</div>
+<% } %> <% if (error && error.length) { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <img
+    class="me-2"
+    src="https://static-cdn.jtvnw.net/emoticons/v1/302306163/1.0"
+    alt="mizkifSadge"
+  />
+  <%= error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+  <img
+    class="ms-2"
+    src="https://static-cdn.jtvnw.net/emoticons/v1/302306163/1.0"
+    alt="mizkifSadge"
+  />
+</div>
+<% } %>
+<script src="/scripts/fade.js"></script>

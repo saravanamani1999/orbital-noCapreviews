@@ -1,12 +1,53 @@
-<div class="navbar">
-    <div class="logo">
-        <form action="/" method='POST'>
-            <input type="image" src="/images/logo.jpg" alt="noCapReviews Logo" id="logo">
-        </form>
-    </div>
-    <div class="search">
-        <form id="search" action="/searchModules" method="get">
-            <input id="search-bar" name="q" type="search" placeholder="Search for modules" ">
-      </form>
-    </div>
+<header
+  class="d-flex justify-content-between flex-column flex-md-row"
+  id="navbar"
+>
+<!-- Local CSS -->
+<link rel="stylesheet" href="/stylesheets/easy-autocomplete.min.css">
+<link rel="stylesheet" href="/stylesheets/easy-autocomplete.themes.min.css">
+<!-- jQuery JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
+
+  <div id="logo">
+    <a href="/">
+      <img src="/images/logo.jpg" alt="noCapReviews Logo" id="logo" />
+    </a>
   </div>
+
+  <form id="search" action="/modules/search" method="get">
+    <div class="dropdown">
+      <a
+        class="btn btn-transparent dropdown-toggle shadow-none text-light me-3"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Profile
+        <img
+          class="ms-1"
+          src="https://static-cdn.jtvnw.net/emoticons/v1/301040809/1.0"
+          alt="mizkifSit"
+        />
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <% if (currentUser) { %>
+        <li><a class="dropdown-item" href="/user/profile">Edit Profile</a></li>
+        <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+        <% } else { %>
+        <li><a class="dropdown-item" href="/user/login">Log in</a></li>
+        <% } %>
+      </ul>
+    </div>
+    <input
+      class="form-control"
+      id="search-bar"
+      name="q"
+      type="search"
+      placeholder="Search for modules"
+    />
+  </form>
+  <!-- Local JS -->
+  <script src="/scripts/autocomplete.js"></script>
+</header>
