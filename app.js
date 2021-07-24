@@ -7,6 +7,9 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const helmet = require("helmet");
+
+const MongoStore = require("connect-mongo");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,6 +23,7 @@ mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
@@ -38,12 +42,25 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true })); // parsing req.body
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "static"))); // serving static files
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+); // security
+
+const secret = process.env.secret || "secret";
 
 const sessionConfig = {
+  name: "session",
   secret: "secret", // add to dotenv
   resave: false,
   saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: dbURI,
+    touchAfter: 24 * 3600, // time period in seconds
+  }),
   cookie: {
+    // secure: true, // for production
     expires: Date.now() + 1000 * 60 * 60 * 24, // One Day
     maxAge: 1000 * 60 * 60 * 24,
   },
