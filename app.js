@@ -10,18 +10,17 @@ const LocalStrategy = require("passport-local");
 
 const dotenv = require("dotenv");
 dotenv.config();
-const dbURI = `${process.env.dbURI}` || "mongodb://localhost:27017/noCap";
+const dbURI = process.env.dbURI || "mongodb://localhost:27017/noCap";
 const AppError = require("./utils/appError");
 const modules = require("./routes/modules");
 const user = require("./routes/user");
 const User = require("./models/user");
 
 mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
 });
-
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -81,7 +80,6 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = "Something Went Wrong!";
-  console.log(err);
   res.render("error", { err });
 });
 
