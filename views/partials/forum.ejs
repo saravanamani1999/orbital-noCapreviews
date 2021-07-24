@@ -1,5 +1,5 @@
 <section class="text-light" id="forum">
-  <h2>Forum</h2>
+  <h2>Reviews</h2>
   <hr />
   
   <% if (!currentUser) { %> 
@@ -92,7 +92,7 @@
   <!-- Display number of comments -->
   <h2>
     <%= (comments.forum.length===1) ? `${comments.forum.length} Comment` :
-    `${comments.forum.length} Comments` %>
+    `${comments.forum.length} Reviews` %>
   </h2>
   <!-- If no comments exists -->
   <% if (comments.forum.length === 0) { %> 
