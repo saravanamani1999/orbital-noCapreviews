@@ -4,14 +4,20 @@
     <%- include('partials/head') %>
     <!-- Local CSS -->
     <link rel="stylesheet" href="/stylesheets/index.css" />
-    <link rel="stylesheet" href="/stylesheets/easy-autocomplete.index.min.css">
-    <link rel="stylesheet" href="/stylesheets/easy-autocomplete.themes.min.css">
+    <link
+      rel="stylesheet"
+      href="/stylesheets/easy-autocomplete.index.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/easy-autocomplete.themes.min.css"
+    />
     <title>noCapReviews</title>
   </head>
   <body>
     <%- include('partials/flash') %> <% if (currentUser) {%>
     <div class="d-flex flex-row-reverse dropdown">
-     <a
+      <a
         class="
           btn btn-transparent
           dropdown-toggle
@@ -26,7 +32,7 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Profile -->
+        Profile
         <img
           class="ms-1"
           src="https://static-cdn.jtvnw.net/emoticons/v1/301040809/1.0"
@@ -53,7 +59,6 @@
         justify-content-center
         vh-100
       "
-   
     >
       <img
         class="mx-auto mb-1"
@@ -63,14 +68,12 @@
       />
       <form class="w-50" action="/modules/search" method="GET">
         <input
-        class="form-control border border-dark rounded-pill"
-        name="q"
-        type="search"
-        id="search-bar"
-        placeholder="Search modules. Try 'CS1010S'"
-      />
-        
-
+          class="form-control border border-dark rounded-pill"
+          name="q"
+          type="search"
+          id="search-bar"
+          placeholder="Search modules. Try 'CS1010S'"
+        />
       </form>
       <% if (!currentUser) {%>
       <h5 class="text-light">
