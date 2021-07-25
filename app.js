@@ -8,6 +8,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const MongoStore = require("connect-mongo");
 
@@ -42,6 +43,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true })); // parsing req.body
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "static"))); // serving static files
+app.use(mongoSanitize()); // prevent mongo injections
 app.use(
   helmet({
     contentSecurityPolicy: false,
