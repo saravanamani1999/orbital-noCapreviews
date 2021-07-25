@@ -153,15 +153,4 @@ if __name__ == "__main__":
 
     print("Negative(Overall):", negative_count_4/100)
     print("Positive(Overall):", positive_count_4/100)
-    # feedback = "I ordered just once from TerribleCo, they screwed up, never used the app again."
-    # custom_tokens = remove_noise(word_tokenize(feedback))
-    # for m in month:
-
-    #     custom_tokens = remove_noise(word_tokenize(feedback))
-
-    # print(feedback, classifier.classify(dict([token, True] for token in custom_tokens)))
-    
-    # if classifier.classify(dict([token, True] for token in custom_tokens)) == "Negative" :
-    #     negative_count += 1
-    #     print("Negative:", negative_count)
 
