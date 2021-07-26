@@ -61,6 +61,7 @@ const sessionConfig = {
     mongoUrl: dbURI,
     touchAfter: 24 * 3600, // time period in seconds
   }),
+  proxy: true,
   cookie: {
     secure: true, // for production
     expires: Date.now() + 1000 * 60 * 60 * 24, // One Day
