@@ -54,7 +54,7 @@ const secret = process.env.secret || "secret";
 
 const sessionConfig = {
   name: "session",
-  secret: "secret", // add to dotenv
+  secret: secret, // add to dotenv
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
@@ -62,7 +62,7 @@ const sessionConfig = {
     touchAfter: 24 * 3600, // time period in seconds
   }),
   cookie: {
-    // secure: true, // for production
+    secure: true, // for production
     expires: Date.now() + 1000 * 60 * 60 * 24, // One Day
     maxAge: 1000 * 60 * 60 * 24,
   },
