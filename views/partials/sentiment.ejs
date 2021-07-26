@@ -20,11 +20,11 @@
   >
     <h3>Workload</h3>
     <div>
+      <% for (let i=0; i < comments.ratings.workload; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
+      <% } %> <% for (let i=0; i < 5 - comments.ratings.workload; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap-gray" />
+      <% } %>
     </div>
   </article>
   <article
@@ -33,11 +33,11 @@
   >
     <h3>Teaching Staff</h3>
     <div>
+      <% for (let i=0; i < comments.ratings.teachingStaff; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
+      <% } %> <% for (let i=0; i < 5 - comments.ratings.teachingStaff; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap-gray" />
+      <% } %>
     </div>
   </article>
   <article
@@ -46,11 +46,11 @@
   >
     <h3>Overall Experience</h3>
     <div>
+      <% for (let i=0; i < comments.ratings.overallExp; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
-      <img src="/images/cap-filled.png" class="rating-cap" />
+      <% } %> <% for (let i=0; i < 5 - comments.ratings.overallExp; i++) { %>
       <img src="/images/cap-filled.png" class="rating-cap-gray" />
-      <img src="/images/cap-filled.png" class="rating-cap-gray" />
+      <% } %>
     </div>
   </article>
 </section>

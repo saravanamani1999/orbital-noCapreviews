@@ -234,7 +234,8 @@ print(difficulty_cap, workload_cap, teaching_cap, overall_cap)
 
 ### LOCAL ##############
 # Connecting to mongodb
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient(
+    'mongodb+srv://test1234:test1234@cluster0.inkot.mongodb.net/noCap?retryWrites=true&w=majority')
 # Selecting database
 db = client.noCap
 # Selecting modules collection
