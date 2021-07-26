@@ -39,20 +39,22 @@
                 <div class="invalid-feedback">Please choose a username.</div>
               </div>
               <div class="form-floating col-md-4">
-                <select
+                <input
                   class="form-select"
                   list="listOfSemesters"
                   name="comment[semester]"
                   id="semester"
                   placeholder="Select a Semester"
+                  value="<%= comment.semester %> "
                   required
-                >
-                  <option value="AY 20/21 Sem 2">AY 20/21 Sem 2</option>
-                  <option value="AY 20/21 Sem 1">AY 20/21 Sem 1</option>
-                  <option value="AY 19/20 Sem 2">AY 19/20 Sem 2</option>
-                  <option value="AY 19/20 Sem 1">AY 19/20 Sem 1</option>
-                </select>
+                />
                 <label for="semester" class="form-label">Semester</label>
+                <datalist id="listOfSemesters">
+                  <option value="AY 20/21 Sem 2"></option>
+                  <option value="AY 20/21 Sem 1"></option>
+                  <option value="AY 19/20 Sem 2"></option>
+                  <option value="AY 19/20 Sem 1"></option>
+                </datalist>
                 <div class="invalid-feedback">Please choose a semester.</div>
               </div>
               <div class="form-floating col-md-4">
@@ -63,7 +65,6 @@
                   id="major"
                   placeholder="Type to search.."
                   value="<%= comment.major %> "
-                  readonly
                   required
                 />
                 <label for="major" class="form-label">Major</label>
